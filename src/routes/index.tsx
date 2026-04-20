@@ -45,41 +45,73 @@ function Hero() {
           alt="Premium cab in Bangalore"
           width={1920}
           height={1080}
-          className="h-full w-full object-cover"
+          className="h-full w-full scale-105 object-cover"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.18 0.02 250 / 0.78) 0%, oklch(0.18 0.02 250 / 0.55) 60%, oklch(0.995 0.003 80 / 0.95) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.14 0.025 260 / 0.82) 0%, oklch(0.18 0.03 250 / 0.65) 55%, oklch(0.995 0.003 80 / 0.98) 100%)" }} />
+        <div className="absolute inset-0 gradient-mesh opacity-90" />
+        <div className="absolute inset-0 noise opacity-[0.04] mix-blend-overlay" />
       </div>
-      <div className="mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pb-24 lg:pt-36">
+
+      {/* Floating orbs */}
+      <div className="pointer-events-none absolute -left-20 top-20 -z-10 h-72 w-72 rounded-full opacity-30 blur-3xl animate-float" style={{ background: "var(--whatsapp)" }} />
+      <div className="pointer-events-none absolute -right-10 top-40 -z-10 h-80 w-80 rounded-full opacity-20 blur-3xl animate-float" style={{ background: "var(--gold)", animationDelay: "1.5s" }} />
+
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 sm:pt-32 lg:px-8 lg:pb-28 lg:pt-40">
         <div className="max-w-3xl text-primary-foreground animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
-            <Star className="h-3.5 w-3.5 fill-current" style={{ color: "var(--gold)" }} />
+          <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 text-xs font-medium text-white">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style={{ background: "var(--whatsapp)" }} />
+              <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: "var(--whatsapp)" }} />
+            </span>
             Trusted by 10,000+ travellers in Bangalore
           </div>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Premium Cab Rental in <span style={{ color: "var(--gold)" }}>Bangalore</span>
+          <h1 className="mt-6 text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+            Premium Cab Rental
+            <br />
+            <span className="font-serif text-[1.15em] font-normal italic text-gradient-gold animate-gradient" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75), oklch(0.92 0.13 90))" }}>
+              in Bangalore
+            </span>
           </h1>
-          <p className="mt-5 max-w-xl text-base text-white/85 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
             Airport Transfers, Outstation Trips & Local Rentals — booked in seconds on WhatsApp. Clean cars, professional drivers, no surprises.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+              <Button size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-7 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 <MessageCircle className="h-5 w-5" />
                 Book on WhatsApp
               </Button>
             </a>
             <Link to="/fleet">
-              <Button size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20 hover:text-white">
+              <Button size="lg" variant="outline" className="h-12 border-white/25 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur-md hover:bg-white/15 hover:text-white">
                 View Fleet
               </Button>
             </Link>
           </div>
+
+          {/* Mini stats */}
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            {[
+              { n: "10K+", l: "Happy riders" },
+              { n: "4.9★", l: "Average rating" },
+              { n: "24×7", l: "Always available" },
+            ].map((s) => (
+              <div key={s.l} className="flex items-baseline gap-2">
+                <div className="font-serif text-3xl text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75))" }}>{s.n}</div>
+                <div className="text-xs uppercase tracking-wider text-white/70">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-10 sm:mt-14">
+        <div className="mt-12 sm:mt-16">
           <BookingBar />
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
     </section>
   );
 }
@@ -254,16 +286,24 @@ function FAQ() {
 function CTASection() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-      <div className="relative overflow-hidden rounded-3xl gradient-hero p-10 text-center text-primary-foreground shadow-elegant sm:p-16">
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-20" style={{ background: "var(--gold)" }} />
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ready to ride? Let's get you moving.</h2>
-        <p className="mx-auto mt-3 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
-        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-7 inline-block">
-          <Button size="lg" className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+      <div className="relative overflow-hidden rounded-[2rem] gradient-hero p-10 text-center text-primary-foreground shadow-elegant sm:p-16">
+        <div className="absolute inset-0 gradient-mesh opacity-60" />
+        <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-25 blur-2xl animate-float" style={{ background: "var(--gold)" }} />
+        <div className="absolute -left-10 bottom-0 h-64 w-64 rounded-full opacity-25 blur-2xl animate-float" style={{ background: "var(--whatsapp)", animationDelay: "1.2s" }} />
+        <div className="absolute inset-0 noise opacity-[0.05] mix-blend-overlay" />
+        <div className="relative">
+        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          Ready to ride? <span className="font-serif italic text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75))" }}>Let's get you moving.</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
+        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block">
+          <Button size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-8 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             <MessageCircle className="h-5 w-5" />
             Book on WhatsApp
           </Button>
         </a>
+        </div>
       </div>
     </section>
   );
@@ -272,8 +312,11 @@ function CTASection() {
 function SectionHeading({ eyebrow, title, align = "center" }: { eyebrow: string; title: string; align?: "center" | "left" }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <div className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--whatsapp)" }}>{eyebrow}</div>
-      <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <div className={`inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] shadow-card ${align === "center" ? "" : ""}`} style={{ color: "var(--whatsapp)" }}>
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--whatsapp)" }} />
+        {eyebrow}
+      </div>
+      <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">{title}</h2>
     </div>
   );
 }
