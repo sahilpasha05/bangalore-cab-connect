@@ -1,26 +1,279 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import { MessageCircle, ShieldCheck, Clock, Star, Plane, MapPin, Car, Quote, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingBar } from "@/components/site/BookingBar";
+import { VehicleCard } from "@/components/site/VehicleCard";
+import { fleet } from "@/data/fleet";
+import { waLink, messages } from "@/lib/whatsapp";
+import heroImg from "@/assets/hero-cab.jpg";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Bangalore Cab Rental — Airport, Outstation & Local Rentals" },
+      { name: "description", content: "Premium cab rental in Bangalore. Book Innova, Tempo Traveller, Sedan & Coach on WhatsApp. Trusted drivers, transparent pricing." },
+      { property: "og:title", content: "Bangalore Cab Rental — Premium Booking" },
+      { property: "og:description", content: "Airport transfers, outstation trips & hourly local rentals across Bangalore." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <TrustStrip />
+      <ServicesPreview />
+      <FleetPreview />
+      <WhyUs />
+      <Testimonials />
+      <FAQ />
+      <CTASection />
+    </>
   );
 }
 
-function Index() {
-  return <PlaceholderIndex />;
+function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={heroImg}
+          alt="Premium cab in Bangalore"
+          width={1920}
+          height={1080}
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.18 0.02 250 / 0.78) 0%, oklch(0.18 0.02 250 / 0.55) 60%, oklch(0.995 0.003 80 / 0.95) 100%)" }} />
+      </div>
+      <div className="mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pb-24 lg:pt-36">
+        <div className="max-w-3xl text-primary-foreground animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
+            <Star className="h-3.5 w-3.5 fill-current" style={{ color: "var(--gold)" }} />
+            Trusted by 10,000+ travellers in Bangalore
+          </div>
+          <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Premium Cab Rental in <span style={{ color: "var(--gold)" }}>Bangalore</span>
+          </h1>
+          <p className="mt-5 max-w-xl text-base text-white/85 sm:text-lg">
+            Airport Transfers, Outstation Trips & Local Rentals — booked in seconds on WhatsApp. Clean cars, professional drivers, no surprises.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+                <MessageCircle className="h-5 w-5" />
+                Book on WhatsApp
+              </Button>
+            </a>
+            <Link to="/fleet">
+              <Button size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20 hover:text-white">
+                View Fleet
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-10 sm:mt-14">
+          <BookingBar />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrustStrip() {
+  const items = [
+    { icon: ShieldCheck, label: "Verified Drivers" },
+    { icon: Clock, label: "24×7 Available" },
+    { icon: Star, label: "4.9 Rated Service" },
+    { icon: Car, label: "Sanitised Fleet" },
+  ];
+  return (
+    <section className="border-y border-border/60 bg-card">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-6 sm:grid-cols-4 sm:px-6 lg:px-8">
+        {items.map((it) => (
+          <div key={it.label} className="flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground">
+            <it.icon className="h-4 w-4" style={{ color: "var(--whatsapp)" }} />
+            {it.label}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ServicesPreview() {
+  const services = [
+    { icon: Plane, title: "Airport Transfers", desc: "On-time pickups and drops to KIA Airport with flight tracking.", msg: messages.airport },
+    { icon: MapPin, title: "Outstation Trips", desc: "Coorg, Ooty, Mysuru, Chikmagalur and more — one-way & round-trip.", msg: messages.outstation },
+    { icon: Clock, title: "Local Rentals", desc: "Hourly packages for meetings, shopping or city exploration.", msg: messages.local },
+  ];
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="What we offer" title="Cab services built for Bangalore" />
+      <div className="mt-10 grid gap-5 md:grid-cols-3">
+        {services.map((s, i) => (
+          <div key={s.title}
+            className="group rounded-2xl border border-border/70 bg-card p-7 shadow-card transition-smooth hover:-translate-y-1 hover:shadow-elegant animate-fade-in-up"
+            style={{ animationDelay: `${i * 80}ms` }}>
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl gradient-hero text-primary-foreground">
+              <s.icon className="h-6 w-6" />
+            </div>
+            <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+            <a href={waLink(s.msg)} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-smooth group-hover:gap-2.5" style={{ color: "var(--whatsapp)" }}>
+              <MessageCircle className="h-4 w-4" />
+              Enquire on WhatsApp
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FleetPreview() {
+  return (
+    <section className="gradient-soft">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading eyebrow="Our fleet" title="Pick the perfect ride" align="left" />
+          <Link to="/fleet" className="text-sm font-semibold hover:underline" style={{ color: "var(--whatsapp)" }}>
+            View all vehicles →
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {fleet.map((v, i) => <VehicleCard key={v.name} v={v} index={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  const items = [
+    { title: "Transparent Pricing", desc: "No hidden charges. Confirmed fare on WhatsApp before booking." },
+    { title: "Professional Drivers", desc: "Verified, courteous and well-versed with Bangalore routes." },
+    { title: "Clean & Sanitised", desc: "Every cab is deep-cleaned before each trip." },
+    { title: "Instant Booking", desc: "Reach a real human on WhatsApp — no app, no signup." },
+  ];
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="Why choose us" title="A better way to ride" />
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map((it, i) => (
+          <div key={it.title}
+            className="rounded-2xl border border-border/70 bg-card p-6 shadow-card transition-smooth hover:-translate-y-1 hover:shadow-elegant animate-fade-in-up"
+            style={{ animationDelay: `${i * 70}ms` }}>
+            <div className="text-3xl font-bold" style={{ color: "var(--whatsapp)" }}>0{i + 1}</div>
+            <h3 className="mt-3 text-base font-semibold">{it.title}</h3>
+            <p className="mt-1.5 text-sm text-muted-foreground">{it.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const list = [
+    { name: "Anjali R.", role: "Whitefield", quote: "Booked an Innova for Coorg last weekend — driver was on-time, polite and the car was spotless. Will book again." },
+    { name: "Karthik M.", role: "Indiranagar", quote: "Best airport cab service in Bangalore. Fixed price on WhatsApp, no surprises. Highly recommend." },
+    { name: "Priya S.", role: "Koramangala", quote: "Hired a Tempo Traveller for our team offsite. Smooth experience from booking to drop. Loved it." },
+  ];
+  return (
+    <section className="gradient-soft">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <SectionHeading eyebrow="Testimonials" title="Loved by travellers across Bangalore" />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {list.map((t, i) => (
+            <div key={t.name}
+              className="rounded-2xl border border-border/70 bg-card p-7 shadow-card animate-fade-in-up"
+              style={{ animationDelay: `${i * 80}ms` }}>
+              <Quote className="h-6 w-6" style={{ color: "var(--whatsapp)" }} />
+              <p className="mt-3 text-sm leading-relaxed text-foreground/85">"{t.quote}"</p>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full gradient-hero text-sm font-semibold text-primary-foreground">
+                  {t.name[0]}
+                </div>
+                <div>
+                  <div className="text-sm font-semibold">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </div>
+                <div className="ml-auto flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} className="h-3.5 w-3.5 fill-current" style={{ color: "var(--gold)" }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    { q: "How do I book a cab?", a: "Tap any 'Book on WhatsApp' button. We'll confirm your fare and driver details within minutes." },
+    { q: "Do you provide outstation cabs?", a: "Yes — Coorg, Ooty, Mysuru, Chikmagalur, Wayanad and more. Both one-way and round-trip available." },
+    { q: "Are the drivers verified?", a: "All our drivers are background-verified, licensed and trained in Bangalore routes." },
+    { q: "What payment methods do you accept?", a: "Cash, UPI, bank transfer and corporate billing for monthly clients." },
+    { q: "Is there a cancellation fee?", a: "Free cancellation up to 2 hours before pickup for local trips. Outstation has a small driver allowance." },
+  ];
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+      <div className="mt-10 space-y-3">
+        {faqs.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <button
+              key={f.q}
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="w-full rounded-2xl border border-border/70 bg-card p-5 text-left shadow-card transition-smooth hover:shadow-elegant"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <span className="font-semibold">{f.q}</span>
+                <ChevronDown className={`h-5 w-5 shrink-0 transition-smooth ${isOpen ? "rotate-180" : ""}`} />
+              </div>
+              {isOpen && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>}
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function CTASection() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <div className="relative overflow-hidden rounded-3xl gradient-hero p-10 text-center text-primary-foreground shadow-elegant sm:p-16">
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-20" style={{ background: "var(--gold)" }} />
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ready to ride? Let's get you moving.</h2>
+        <p className="mx-auto mt-3 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
+        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-7 inline-block">
+          <Button size="lg" className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+            <MessageCircle className="h-5 w-5" />
+            Book on WhatsApp
+          </Button>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function SectionHeading({ eyebrow, title, align = "center" }: { eyebrow: string; title: string; align?: "center" | "left" }) {
+  return (
+    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+      <div className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--whatsapp)" }}>{eyebrow}</div>
+      <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+    </div>
+  );
 }

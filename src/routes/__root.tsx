@@ -1,6 +1,9 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { FloatingWhatsApp } from "@/components/site/WhatsAppButton";
 
 function NotFoundComponent() {
   return (
@@ -29,14 +32,12 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Bangalore Cab Rental — Premium Cab Booking in Bangalore" },
+      { name: "description", content: "Premium cab rental in Bangalore. Airport transfers, outstation trips & local rentals. Book instantly on WhatsApp." },
+      { property: "og:title", content: "Bangalore Cab Rental — Premium Cab Booking" },
+      { property: "og:description", content: "Airport transfers, outstation & local rentals. Book on WhatsApp." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -65,5 +66,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+      <FloatingWhatsApp />
+    </div>
+  );
 }
