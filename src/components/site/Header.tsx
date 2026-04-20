@@ -15,14 +15,15 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 transition-smooth hover:opacity-80">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-hero text-primary-foreground">
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl gradient-hero text-primary-foreground shadow-elegant">
             <Car className="h-5 w-5" />
+            <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full ring-2 ring-background" style={{ background: "var(--whatsapp)" }} />
           </div>
           <div className="leading-tight">
-            <div className="text-sm font-bold tracking-tight">Bangalore Cab Rental</div>
-            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Premium Travel</div>
+            <div className="text-[15px] font-bold tracking-tight">Bangalore Cab Rental</div>
+            <div className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">Premium Travel</div>
           </div>
         </Link>
 

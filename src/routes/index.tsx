@@ -286,16 +286,24 @@ function FAQ() {
 function CTASection() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-      <div className="relative overflow-hidden rounded-3xl gradient-hero p-10 text-center text-primary-foreground shadow-elegant sm:p-16">
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-20" style={{ background: "var(--gold)" }} />
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ready to ride? Let's get you moving.</h2>
-        <p className="mx-auto mt-3 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
-        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-7 inline-block">
-          <Button size="lg" className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+      <div className="relative overflow-hidden rounded-[2rem] gradient-hero p-10 text-center text-primary-foreground shadow-elegant sm:p-16">
+        <div className="absolute inset-0 gradient-mesh opacity-60" />
+        <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-25 blur-2xl animate-float" style={{ background: "var(--gold)" }} />
+        <div className="absolute -left-10 bottom-0 h-64 w-64 rounded-full opacity-25 blur-2xl animate-float" style={{ background: "var(--whatsapp)", animationDelay: "1.2s" }} />
+        <div className="absolute inset-0 noise opacity-[0.05] mix-blend-overlay" />
+        <div className="relative">
+        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          Ready to ride? <span className="font-serif italic text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75))" }}>Let's get you moving.</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
+        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block">
+          <Button size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-8 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             <MessageCircle className="h-5 w-5" />
             Book on WhatsApp
           </Button>
         </a>
+        </div>
       </div>
     </section>
   );
@@ -304,8 +312,11 @@ function CTASection() {
 function SectionHeading({ eyebrow, title, align = "center" }: { eyebrow: string; title: string; align?: "center" | "left" }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <div className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--whatsapp)" }}>{eyebrow}</div>
-      <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <div className={`inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] shadow-card ${align === "center" ? "" : ""}`} style={{ color: "var(--whatsapp)" }}>
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--whatsapp)" }} />
+        {eyebrow}
+      </div>
+      <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">{title}</h2>
     </div>
   );
 }
