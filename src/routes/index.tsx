@@ -47,7 +47,7 @@ function Hero() {
           height={1080}
           className="h-full w-full scale-105 object-cover"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.14 0.025 260 / 0.82) 0%, oklch(0.18 0.03 250 / 0.65) 55%, oklch(0.995 0.003 80 / 0.98) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.14 0.025 260 / 0.92) 0%, oklch(0.16 0.03 250 / 0.85) 55%, oklch(0.18 0.03 250 / 0.78) 100%)" }} />
         <div className="absolute inset-0 gradient-mesh opacity-90" />
         <div className="absolute inset-0 noise opacity-[0.04] mix-blend-overlay" />
       </div>
