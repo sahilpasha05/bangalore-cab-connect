@@ -28,8 +28,8 @@ function ContactPage() {
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:px-6 md:grid-cols-2 lg:px-8">
         {[
-          { icon: MessageCircle, title: "WhatsApp", value: "+91 99999 99999", action: "Chat now", href: waLink(messages.general), highlight: true },
-          { icon: Phone, title: "Call us", value: "+91 99999 99999", action: "Call now", href: "tel:+919999999999" },
+          { icon: MessageCircle, title: "WhatsApp", value: "+91 81231 40946", action: "Chat now", href: waLink(messages.general), highlight: true },
+          { icon: Phone, title: "Call us", value: "+91 81231 40946", action: "Call now", href: "tel:+918123140946" },
           { icon: Mail, title: "Email", value: "hello@bangalorecabrental.in", action: "Send email", href: "mailto:hello@bangalorecabrental.in" },
           { icon: MapPin, title: "Based in", value: "Bangalore, Karnataka", action: "Service area: All of Bangalore + Karnataka" },
         ].map((c, i) => (

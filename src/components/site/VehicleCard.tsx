@@ -1,76 +1,78 @@
-import { Users, Briefcase, Snowflake, MessageCircle } from "lucide-react";
+import { Users, UserRound, Gauge, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { waLink, messages } from "@/lib/whatsapp";
+import { waLink, messages, callLink } from "@/lib/whatsapp";
 
 export type Vehicle = {
   name: string;
-  tagline: string;
   image: string;
   seats: number;
-  luggage: number;
-  ac: boolean;
-  priceFrom: string;
+  bata: number;
+  acRate: string;
+  nonAcRate: string;
   badge?: string;
 };
 
 export function VehicleCard({ v, index = 0 }: { v: Vehicle; index?: number }) {
   return (
     <div
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-smooth hover:-translate-y-1 hover:shadow-elegant animate-fade-in-up"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card shadow-card transition-smooth hover:-translate-y-0.5 hover:shadow-elegant animate-fade-in-up"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {v.badge && (
-        <div className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">
-          {v.badge}
+      <div className="relative overflow-hidden rounded-b-3xl bg-[#f6f6f6] p-4 pt-5">
+        <div className="absolute left-4 top-4 z-10 rounded-full bg-black px-4 py-1.5 text-sm font-semibold text-white">
+          {v.name}
         </div>
-      )}
-      <div className="aspect-[4/3] overflow-hidden bg-secondary/60">
         <img
           src={v.image}
           alt={v.name}
           loading="lazy"
           width={1024}
           height={768}
-          className="h-full w-full object-cover transition-smooth group-hover:scale-105"
+          className="h-52 w-full object-contain pt-8 transition-smooth group-hover:scale-[1.02] sm:h-56"
         />
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-lg font-bold tracking-tight">{v.name}</h3>
-            <p className="text-sm text-muted-foreground">{v.tagline}</p>
-          </div>
-          <div className="text-right">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">From</div>
-            <div className="text-base font-bold">{v.priceFrom}</div>
-          </div>
+
+      {v.badge && (
+        <div className="absolute right-6 top-[52%] z-10 rounded-full bg-[#e8d919] px-4 py-1 text-sm font-semibold text-black sm:top-[53%]">
+          {v.badge}
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col bg-[#020f1f] px-6 pb-6 pt-7 text-white">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+          <Detail icon={<Users className="h-5 w-5" />} label={`${v.seats} Seater`} />
+          <Detail icon={<Gauge className="h-5 w-5" />} label={`AC ${v.acRate}`} />
+          <Detail icon={<UserRound className="h-5 w-5" />} label={`${v.bata} Bata`} />
+          <Detail icon={<Gauge className="h-5 w-5" />} label={`Non AC ${v.nonAcRate}`} />
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Spec icon={<Users className="h-3.5 w-3.5" />} label={`${v.seats} Seats`} />
-          <Spec icon={<Briefcase className="h-3.5 w-3.5" />} label={`${v.luggage} Bags`} />
-          {v.ac && <Spec icon={<Snowflake className="h-3.5 w-3.5" />} label="AC" />}
-        </div>
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          <a
+            href={waLink(messages.vehicle(v.name))}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="h-11 w-full rounded-full border-0 bg-[#0ca01e] text-base font-medium text-white hover:bg-[#0b8e1a]">
+              <MessageCircle className="h-4 w-4" />
+              Whatsapp
+            </Button>
+          </a>
 
-        <a
-          href={waLink(messages.vehicle(v.name))}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5"
-        >
-          <Button className="w-full gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth group-hover:scale-[1.02]">
-            <MessageCircle className="h-4 w-4" />
-            Book on WhatsApp
-          </Button>
-        </a>
+          <a href={callLink()}>
+            <Button className="h-11 w-full rounded-full border-0 bg-[#ff5a00] text-base font-medium text-white hover:bg-[#e65100]">
+              <Phone className="h-4 w-4" />
+              Call Now
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
   );
 }
 
-function Spec({ icon, label }: { icon: React.ReactNode; label: string }) {
+function Detail({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground">
+    <span className="inline-flex items-center gap-3 text-[1.1rem] font-medium leading-none text-white sm:text-xl">
       {icon}
       {label}
     </span>
