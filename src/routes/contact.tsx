@@ -30,7 +30,7 @@ function ContactPage() {
         {[
           { icon: MessageCircle, title: "WhatsApp", value: "+91 81231 40946", action: "Chat now", href: waLink(messages.general), highlight: true },
           { icon: Phone, title: "Call us", value: "+91 81231 40946", action: "Call now", href: "tel:+918123140946" },
-          { icon: Mail, title: "Email", value: "hello@bangalorecabrental.in", action: "Send email", href: "mailto:hello@bangalorecabrental.in" },
+          { icon: Mail, title: "Email", value: "chandrshekar45555@gmail.com", action: "Send email", href: "mailto:chandrshekar45555@gmail.com" },
           { icon: MapPin, title: "Based in", value: "Bangalore, Karnataka", action: "Service area: All of Bangalore + Karnataka" },
         ].map((c, i) => (
           <div key={c.title}

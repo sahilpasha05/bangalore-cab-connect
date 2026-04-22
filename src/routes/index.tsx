@@ -63,10 +63,10 @@ function Hero() {
             </span>
             Trusted by 10,000+ travellers in Bangalore
           </div>
-          <h1 className="mt-5 text-4xl font-extrabold leading-[1.06] tracking-tight sm:mt-6 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight sm:mt-6 sm:text-6xl lg:text-7xl">
             Premium Cab Rental
             <br />
-            <span className="font-serif text-[1.15em] font-normal italic text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75), oklch(0.92 0.13 90))" }}>
+            <span className="block pb-2 font-serif text-[1.15em] font-normal italic leading-[1.2] text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75), oklch(0.92 0.13 90))" }}>
               in Bangalore
             </span>
           </h1>
