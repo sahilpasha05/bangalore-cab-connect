@@ -32,6 +32,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "SWqnDS9ovNe1NMWg9p-u5-K9lzuNt1oaV557_vnI0Xk" },
       { title: "Bangalore Cab Rental — Premium Cab Booking in Bangalore" },
       { name: "description", content: "Premium cab rental in Bangalore. Airport transfers, outstation trips & local rentals. Book instantly on WhatsApp." },
       { property: "og:title", content: "Bangalore Cab Rental — Premium Cab Booking" },
