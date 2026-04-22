@@ -33,7 +33,7 @@ export const fleet: Vehicle[] = [
   },
   {
     name: "Tempo Traveller",
-    image: vehicleImages.tempo,
+    image: vehicleImages.urbania,
     seats: 12,
     bata: 500,
     acRate: "₹22",
@@ -42,7 +42,7 @@ export const fleet: Vehicle[] = [
   },
   {
     name: "Force Urbania",
-    image: vehicleImages.urbania,
+    image: vehicleImages.tempo,
     seats: 12,
     bata: 500,
     acRate: "₹43",
