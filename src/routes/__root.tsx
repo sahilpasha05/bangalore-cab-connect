@@ -68,7 +68,6 @@ export const Route = createRootRoute({
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <meta name="google-site-verification" content="SWqnDS9ovNe1NMWg9p-u5-K9lzuNt1oaV557_vnI0Xk" />
       <HeadContent />
       {children}
       <Scripts />
