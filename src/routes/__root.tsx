@@ -67,16 +67,12 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="SWqnDS9ovNe1NMWg9p-u5-K9lzuNt1oaV557_vnI0Xk" />
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
+    <>
+      <meta name="google-site-verification" content="SWqnDS9ovNe1NMWg9p-u5-K9lzuNt1oaV557_vnI0Xk" />
+      <HeadContent />
+      {children}
+      <Scripts />
+    </>
   );
 }
 
