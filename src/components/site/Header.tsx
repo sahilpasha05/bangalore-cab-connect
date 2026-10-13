@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Car, Menu, X, Phone } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { waLink, messages } from "@/lib/whatsapp";
+import { openBooking } from "@/lib/booking-dialog";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -41,16 +41,10 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={waLink(messages.general)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+          <Button onClick={() => openBooking()} className="gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
               <Phone className="h-4 w-4" />
-              Book on WhatsApp
+              Book Now
             </Button>
-          </a>
         </div>
 
         <button
@@ -76,16 +70,9 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <a
-              href={waLink(messages.general)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2"
-            >
-              <Button className="w-full gradient-cta border-0 text-whatsapp-foreground">
-                Book on WhatsApp
-              </Button>
-            </a>
+            <Button onClick={() => { setOpen(false); openBooking(); }} className="mt-2 w-full gradient-cta border-0 text-whatsapp-foreground">
+              Book Now
+            </Button>
           </div>
         </div>
       )}

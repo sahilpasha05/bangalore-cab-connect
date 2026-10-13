@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { BookingBar } from "@/components/site/BookingBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
+import { openBooking } from "@/lib/booking-dialog";
 import { waLink, messages } from "@/lib/whatsapp";
 import heroImg from "@/assets/hero-cab.jpg";
 import { useState } from "react";
@@ -71,16 +72,16 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-lg">
-            Airport Transfers, Outstation Trips & Local Rentals — booked in seconds on WhatsApp. Clean cars, professional drivers, no surprises.
+            Airport Transfers, Outstation Trips & Local Rentals — booked in seconds online. Clean cars, professional drivers, no surprises.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
-            <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <Button size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-7 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+            <div target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Button onClick={() => openBooking()} size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-7 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 <MessageCircle className="h-5 w-5" />
-                Book on WhatsApp
+                Book Now
               </Button>
-            </a>
+            </div>
             <Link to="/fleet" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="h-12 border-white/25 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur-md hover:bg-white/15 hover:text-white">
                 View Fleet
@@ -249,7 +250,7 @@ function Testimonials() {
 
 function FAQ() {
   const faqs = [
-    { q: "How do I book a cab?", a: "Tap any 'Book on WhatsApp' button. We'll confirm your fare and driver details within minutes." },
+    { q: "How do I book a cab?", a: "Tap any 'Book Now' button and fill in your trip details. We'll confirm your fare and driver details within minutes." },
     { q: "Do you provide outstation cabs?", a: "Yes — Coorg, Ooty, Mysuru, Chikmagalur, Wayanad and more. Both one-way and round-trip available." },
     { q: "Are the drivers verified?", a: "All our drivers are background-verified, licensed and trained in Bangalore routes." },
     { q: "What payment methods do you accept?", a: "Cash, UPI, bank transfer and corporate billing for monthly clients." },
@@ -293,14 +294,14 @@ function CTASection() {
         <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
           Ready to ride? <span className="font-serif italic text-gradient-gold" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.92 0.13 90), oklch(0.78 0.15 75))" }}>Let's get you moving.</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-white/80">Tell us your trip on WhatsApp — we'll confirm the price and driver in minutes.</p>
-        <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block">
-          <Button size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-8 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
+        <p className="mx-auto mt-4 max-w-xl text-white/80">Tell us your trip details — we'll confirm the price and driver in minutes.</p>
+        <div target="_blank" rel="noopener noreferrer" className="mt-8 inline-block">
+              <Button onClick={() => openBooking()} size="lg" className="group relative h-12 gap-2 overflow-hidden gradient-cta border-0 px-8 text-base font-semibold text-whatsapp-foreground shadow-glow transition-smooth hover:scale-[1.03]">
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             <MessageCircle className="h-5 w-5" />
-            Book on WhatsApp
-          </Button>
-        </a>
+            Book Now
+              </Button>
+            </div>
         </div>
       </div>
     </section>

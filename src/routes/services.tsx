@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plane, MapPin, Clock, Briefcase, Heart, Calendar, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { waLink, messages } from "@/lib/whatsapp";
+import { openBooking } from "@/lib/booking-dialog";
+import { messages } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services — Bangalore Cab Rental" },
-      { name: "description", content: "Airport transfers, outstation, local rentals, corporate, weddings & events. Book on WhatsApp." },
+      { name: "description", content: "Airport transfers, outstation, local rentals, corporate, weddings & events. Book online." },
       { property: "og:title", content: "Services — Bangalore Cab Rental" },
       { property: "og:description", content: "Cab services for every occasion across Bangalore and Karnataka." },
     ],
@@ -45,12 +46,10 @@ function ServicesPage() {
               </div>
               <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-              <a href={waLink(s.msg)} target="_blank" rel="noopener noreferrer" className="mt-6">
-                <Button className="w-full gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth group-hover:scale-[1.02]">
+              <Button onClick={() => openBooking()} className="mt-6 w-full gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth group-hover:scale-[1.02]">
                   <MessageCircle className="h-4 w-4" />
-                  Book on WhatsApp
+                  Book Now
                 </Button>
-              </a>
             </div>
           ))}
         </div>

@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { MapPin, Calendar, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { waLink, messages } from "@/lib/whatsapp";
+import { openBooking } from "@/lib/booking-dialog";
 
 export function BookingBar() {
   const [pickup, setPickup] = useState("");
   const [drop, setDrop] = useState("");
   const [date, setDate] = useState("");
-
-  const href = waLink(messages.booking(pickup, drop, date));
 
   return (
     <div className="rounded-2xl border border-border/70 bg-card p-2.5 shadow-elegant sm:p-4">
@@ -37,15 +35,16 @@ export function BookingBar() {
             className="w-full bg-transparent text-sm font-medium outline-none"
           />
         </Field>
-        <a href={href} target="_blank" rel="noopener noreferrer" className="sm:self-stretch">
+        <div className="sm:self-stretch">
           <Button
             size="lg"
+            onClick={() => openBooking({ pickup, drop, date })}
             className="h-11 w-full gradient-cta border-0 text-whatsapp-foreground shadow-glow transition-smooth sm:h-full hover:scale-[1.02]"
           >
             <MessageCircle className="h-4 w-4" />
             Book Now
           </Button>
-        </a>
+        </div>
       </div>
     </div>
   );

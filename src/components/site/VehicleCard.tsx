@@ -1,6 +1,7 @@
 import { Users, UserRound, Gauge, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { waLink, messages, callLink } from "@/lib/whatsapp";
+import { callLink } from "@/lib/whatsapp";
+import { openBooking } from "@/lib/booking-dialog";
 
 export type Vehicle = {
   name: string;
@@ -47,16 +48,13 @@ export function VehicleCard({ v, index = 0 }: { v: Vehicle; index?: number }) {
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3">
-          <a
-            href={waLink(messages.vehicle(v.name))}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Button
+            onClick={() => openBooking({ vehicle: v.name })}
+            className="h-11 w-full rounded-full border-0 bg-[#0ca01e] text-base font-medium text-white hover:bg-[#0b8e1a]"
           >
-            <Button className="h-11 w-full rounded-full border-0 bg-[#0ca01e] text-base font-medium text-white hover:bg-[#0b8e1a]">
-              <MessageCircle className="h-4 w-4" />
-              Whatsapp
-            </Button>
-          </a>
+            <MessageCircle className="h-4 w-4" />
+            Book Now
+          </Button>
 
           <a href={callLink()}>
             <Button className="h-11 w-full rounded-full border-0 bg-[#ff5a00] text-base font-medium text-white hover:bg-[#e65100]">

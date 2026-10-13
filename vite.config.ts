@@ -9,5 +9,5 @@ import { nitro } from "nitro/vite";
 
 export default defineConfig({
 	cloudflare: false,
-	plugins: [nitro({ preset: "vercel" })],
+	plugins: [nitro({ preset: "vercel", serverDir: "server" })],
 });
