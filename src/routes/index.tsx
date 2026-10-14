@@ -30,6 +30,8 @@ export const Route = createFileRoute("/")({
           name: BUSINESS.name,
           url: SITE,
           telephone: BUSINESS.phone,
+          logo: SITE + "/logo.png",
+          image: SITE + "/og-image.png",
           areaServed: { "@type": "City", name: "Bangalore" },
           description: "Cab, Innova Crysta, Tempo Traveller and bus rental with driver in Bangalore for airport, outstation and local trips.",
         }),

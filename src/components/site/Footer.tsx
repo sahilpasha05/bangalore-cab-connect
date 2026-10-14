@@ -7,12 +7,7 @@ export function Footer() {
     <footer className="border-t border-border/60 bg-secondary/40">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-5 lg:px-8">
         <div>
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-hero text-primary-foreground">
-              <Car className="h-5 w-5" />
-            </div>
-            <div className="font-bold">Bangalore Cab Rental</div>
-          </div>
+          <img src="/logo.png" alt="Bangalore Cab Rental" width={720} height={288} loading="lazy" className="h-14 w-auto" />
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">
             Premium cab rentals across Bangalore. Airport transfers, outstation trips and local hourly rentals.
           </p>

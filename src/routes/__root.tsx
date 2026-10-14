@@ -40,6 +40,7 @@ export const Route = createRootRoute({
       { property: "og:title", content: "Bangalore Cab Rental — Premium Cab Booking" },
       { property: "og:description", content: "Airport transfers, outstation & local rentals. Book online." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.bangalorecabrental.com/og-image.png" },
       { name: "twitter:card", content: "summary" },
     ],
     links: [

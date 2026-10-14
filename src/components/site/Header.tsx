@@ -17,15 +17,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background">
       <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 transition-smooth hover:opacity-80">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl gradient-hero text-primary-foreground shadow-elegant">
-            <Car className="h-5 w-5" />
-            <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full ring-2 ring-background" style={{ background: "var(--whatsapp)" }} />
-          </div>
-          <div className="leading-tight">
-            <div className="text-[15px] font-bold tracking-tight">Bangalore Cab Rental</div>
-            <div className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">Premium Travel</div>
-          </div>
+        <Link to="/" aria-label="Bangalore Cab Rental home" className="flex items-center transition-smooth hover:opacity-80">
+          <img src="/logo.png" alt="Bangalore Cab Rental" width={720} height={288} className="h-12 w-auto sm:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
