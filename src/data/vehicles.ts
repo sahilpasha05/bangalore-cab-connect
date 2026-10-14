@@ -7,11 +7,12 @@ export type VehicleInfo = Vehicle & {
   group: string;
   idealFor: string[];
   about: string;
+  seoTitle?: string;
 };
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-const copy: Record<string, Pick<VehicleInfo, "headline" | "group" | "idealFor" | "about">> = {
+const copy: Record<string, Pick<VehicleInfo, "headline" | "group" | "idealFor" | "about" | "seoTitle">> = {
   "Innova Crysta": {
     headline: "Innova Crysta on Rent in Bangalore",
     group: "4 to 6 passengers",
@@ -21,6 +22,7 @@ const copy: Record<string, Pick<VehicleInfo, "headline" | "group" | "idealFor" |
   },
   "Tempo Traveller": {
     headline: "Tempo Traveller on Rent in Bangalore",
+    seoTitle: "Tempo Traveller on Rent in Bangalore | 12 Seater Price per km",
     group: "8 to 12 passengers",
     idealFor: ["Group tours and weekend trips", "Family functions", "Corporate outings", "Pilgrimage trips"],
     about:

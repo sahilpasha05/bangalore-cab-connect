@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DropTaxiBangaloreRouteImport } from './routes/drop-taxi-bangalore'
 import { Route as FleetRouteImport } from './routes/fleet'
+import { Route as MiniBusOnRentBangaloreRouteImport } from './routes/mini-bus-on-rent-bangalore'
+import { Route as OutstationCabsBangaloreRouteImport } from './routes/outstation-cabs-bangalore'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RoutesIndexRouteImport } from './routes/routes.index'
 import { Route as RoutesSlugRouteImport } from './routes/routes.$slug'
@@ -33,9 +36,24 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DropTaxiBangaloreRoute = DropTaxiBangaloreRouteImport.update({
+  id: '/drop-taxi-bangalore',
+  path: '/drop-taxi-bangalore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FleetRoute = FleetRouteImport.update({
   id: '/fleet',
   path: '/fleet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MiniBusOnRentBangaloreRoute = MiniBusOnRentBangaloreRouteImport.update({
+  id: '/mini-bus-on-rent-bangalore',
+  path: '/mini-bus-on-rent-bangalore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutstationCabsBangaloreRoute = OutstationCabsBangaloreRouteImport.update({
+  id: '/outstation-cabs-bangalore',
+  path: '/outstation-cabs-bangalore',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -63,7 +81,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
+  '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
+  '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
@@ -73,7 +94,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
+  '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
+  '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
@@ -84,7 +108,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
+  '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
+  '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
@@ -96,7 +123,10 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/contact'
+    | '/drop-taxi-bangalore'
     | '/fleet'
+    | '/mini-bus-on-rent-bangalore'
+    | '/outstation-cabs-bangalore'
     | '/services'
     | '/routes/$slug'
     | '/vehicles/$slug'
@@ -106,7 +136,10 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/contact'
+    | '/drop-taxi-bangalore'
     | '/fleet'
+    | '/mini-bus-on-rent-bangalore'
+    | '/outstation-cabs-bangalore'
     | '/services'
     | '/routes/$slug'
     | '/vehicles/$slug'
@@ -116,7 +149,10 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/contact'
+    | '/drop-taxi-bangalore'
     | '/fleet'
+    | '/mini-bus-on-rent-bangalore'
+    | '/outstation-cabs-bangalore'
     | '/services'
     | '/routes/$slug'
     | '/vehicles/$slug'
@@ -127,7 +163,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   ContactRoute: typeof ContactRoute
+  DropTaxiBangaloreRoute: typeof DropTaxiBangaloreRoute
   FleetRoute: typeof FleetRoute
+  MiniBusOnRentBangaloreRoute: typeof MiniBusOnRentBangaloreRoute
+  OutstationCabsBangaloreRoute: typeof OutstationCabsBangaloreRoute
   ServicesRoute: typeof ServicesRoute
   RoutesSlugRoute: typeof RoutesSlugRoute
   VehiclesSlugRoute: typeof VehiclesSlugRoute
@@ -157,11 +196,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/drop-taxi-bangalore': {
+      id: '/drop-taxi-bangalore'
+      path: '/drop-taxi-bangalore'
+      fullPath: '/drop-taxi-bangalore'
+      preLoaderRoute: typeof DropTaxiBangaloreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/fleet': {
       id: '/fleet'
       path: '/fleet'
       fullPath: '/fleet'
       preLoaderRoute: typeof FleetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mini-bus-on-rent-bangalore': {
+      id: '/mini-bus-on-rent-bangalore'
+      path: '/mini-bus-on-rent-bangalore'
+      fullPath: '/mini-bus-on-rent-bangalore'
+      preLoaderRoute: typeof MiniBusOnRentBangaloreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outstation-cabs-bangalore': {
+      id: '/outstation-cabs-bangalore'
+      path: '/outstation-cabs-bangalore'
+      fullPath: '/outstation-cabs-bangalore'
+      preLoaderRoute: typeof OutstationCabsBangaloreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -199,7 +259,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   ContactRoute: ContactRoute,
+  DropTaxiBangaloreRoute: DropTaxiBangaloreRoute,
   FleetRoute: FleetRoute,
+  MiniBusOnRentBangaloreRoute: MiniBusOnRentBangaloreRoute,
+  OutstationCabsBangaloreRoute: OutstationCabsBangaloreRoute,
   ServicesRoute: ServicesRoute,
   RoutesSlugRoute: RoutesSlugRoute,
   VehiclesSlugRoute: VehiclesSlugRoute,

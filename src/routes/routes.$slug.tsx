@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { PageHero, Section, FaqList, TableBox } from "@/components/site/Seo";
+import { PageHero, Section, FaqList, TableBox, GroupGuide, HubLinks } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import { openBooking } from "@/lib/booking-dialog";
 import { getRoute, routes, areaDistances } from "@/data/routes";
@@ -46,6 +46,8 @@ function buildFaqs(r: ReturnType<typeof getRoute> & {}): Faq[] {
       { q: "How far is Bangalore airport from the city?", a: `Kempegowda International Airport is in Devanahalli, about 35 to 40 km from MG Road and up to 60 km from Electronic City. Allow ${r.hours} depending on traffic.` },
       { q: "Can I book an airport taxi at night or early morning?", a: "Yes. Airport pickups and drops are handled 24x7. Book the cab in advance and confirm the pickup time with us." },
       { q: "Which vehicle should I choose for airport transfers?", a: `An Innova Crysta (7 seats) suits families with luggage, a Tempo Traveller (12 seats) suits groups of up to 12, and our 22 to 50 seater buses suit larger groups.` },
+      { q: "Which terminal will the driver pick me up from?", a: "Share your airline and flight number when you book. The driver is told the correct terminal and waits at arrivals. Bangalore airport has Terminal 1 and Terminal 2, so confirming the flight avoids confusion." },
+      { q: "When should I leave for my flight?", a: `Allow the drive time of ${r.hours} plus about 2 hours before a domestic flight or 3 hours before an international flight. Add extra time in the 7 to 10 AM and 5 to 9 PM traffic windows.` },
       { q: "How much does an airport taxi cost?", a: `Cost depends on the vehicle and your pickup area. Our listed outstation rate for an Innova Crysta is ${innova.acRate} per km (AC). Call or book online and we confirm the airport fare before you travel.` },
     ];
   }
@@ -56,6 +58,8 @@ function buildFaqs(r: ReturnType<typeof getRoute> & {}): Faq[] {
     { q: `Which vehicle is best for a trip to ${r.to}?`, a: `Up to 6 people fit comfortably in an Innova Crysta. For 8 to 12 people choose a Tempo Traveller (${tt.acRate} per km AC) or Force Urbania. For 15 or more, a 22 to 50 seater bus is cheaper per person.` },
     { q: `What is the best time to visit ${r.to}?`, a: r.bestTime },
     { q: "What does driver bata mean?", a: "Driver bata is the daily allowance paid to the driver on outstation trips, in addition to the per-km rate. It is shown in the price table above." },
+    { q: `Should I plan ${r.to} as a day trip or an overnight stay?`, a: r.km <= 150 ? `At about ${r.km} km, ${r.to} works as a one-day return trip if you start early.` : r.km <= 300 ? `At about ${r.km} km, an overnight stay is more comfortable. A same-day return leaves little time at the destination.` : `At about ${r.km} km, plan at least two days so the driver and your group are not rushed.` },
+    { q: `Can I book a one-way drop to ${r.to}?`, a: `Yes, one-way drops are possible. Tell us your date and pickup point and we confirm the one-way fare. See our drop taxi page for more.` },
   ];
 }
 
@@ -152,6 +156,23 @@ function RoutePage() {
         </Section>
       )}
 
+      {!isAirport && (
+        <Section title={`Which vehicle for Bangalore to ${r.to}?`}>
+          <GroupGuide />
+        </Section>
+      )}
+
+      {isAirport && (
+        <Section title="How airport pickup works">
+          <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed">
+            <li>Book with your date, flight number and pickup address.</li>
+            <li>We confirm the vehicle and fare, and share the driver's details before the trip.</li>
+            <li>The driver is at your pickup point on time, or waits at arrivals for your flight.</li>
+            <li>For drops, the driver takes the airport road and stops at the departures level.</li>
+          </ol>
+        </Section>
+      )}
+
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
       </Section>
@@ -163,6 +184,10 @@ function RoutePage() {
             Book {isAirport ? "airport taxi" : `Bangalore to ${r.to}`}
           </Button>
         </div>
+      </Section>
+
+      <Section title="Explore more">
+        <HubLinks />
       </Section>
 
       <Section title="More routes from Bangalore">

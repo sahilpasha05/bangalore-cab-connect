@@ -87,3 +87,83 @@ export function Section({ title, children, id }: { title: string; children: Reac
 export function TableBox({ children }: { children: React.ReactNode }) {
   return <div className="overflow-x-auto rounded-2xl border border-border/70 bg-card">{children}</div>;
 }
+
+import { Link as RouterLink } from "@tanstack/react-router";
+import { vehicles as allVehicles, inr } from "@/data/vehicles";
+
+export function RatesTable({ list = allVehicles }: { list?: typeof allVehicles }) {
+  return (
+    <TableBox>
+      <table className="w-full min-w-[600px] text-left text-sm tabular-nums">
+        <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
+          <tr>
+            <th className="px-4 py-3">Vehicle</th><th className="px-4 py-3">Seats</th>
+            <th className="px-4 py-3">AC / km</th><th className="px-4 py-3">Non AC / km</th><th className="px-4 py-3">Driver bata</th>
+          </tr>
+        </thead>
+        <tbody>
+          {list.map((v) => (
+            <tr key={v.slug} className="border-t border-border/60">
+              <td className="px-4 py-3 font-medium">
+                <RouterLink to="/vehicles/$slug" params={{ slug: v.slug }} className="hover:underline">{v.name}</RouterLink>
+              </td>
+              <td className="px-4 py-3">{v.seats}</td>
+              <td className="px-4 py-3">{v.acRate}</td>
+              <td className="px-4 py-3">{v.nonAcRate}</td>
+              <td className="px-4 py-3">{inr(v.bata)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </TableBox>
+  );
+}
+
+export function GroupGuide() {
+  const rows = [
+    { who: "1 to 4 people", pick: "Innova Crysta", slug: "innova-crysta-on-rent-bangalore" },
+    { who: "5 to 6 people (with luggage)", pick: "Innova Crysta", slug: "innova-crysta-on-rent-bangalore" },
+    { who: "8 to 12 people", pick: "Tempo Traveller or Force Urbania", slug: "tempo-traveller-on-rent-bangalore" },
+    { who: "15 to 22 people", pick: "22 Seater mini bus", slug: "22-seater-on-rent-bangalore" },
+    { who: "25 to 33 people", pick: "25 or 33 Seater bus", slug: "33-seater-on-rent-bangalore" },
+    { who: "35 to 50 people", pick: "40, 45 or 50 Seater bus", slug: "45-seater-on-rent-bangalore" },
+  ];
+  return (
+    <TableBox>
+      <table className="w-full min-w-[420px] text-left text-sm">
+        <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
+          <tr><th className="px-4 py-3">Group size</th><th className="px-4 py-3">Best vehicle</th></tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.who} className="border-t border-border/60">
+              <td className="px-4 py-3 font-medium">{r.who}</td>
+              <td className="px-4 py-3">
+                <RouterLink to="/vehicles/$slug" params={{ slug: r.slug }} className="hover:underline">{r.pick}</RouterLink>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </TableBox>
+  );
+}
+
+export function HubLinks() {
+  const links = [
+    { to: "/drop-taxi-bangalore", label: "Drop taxi from Bangalore" },
+    { to: "/outstation-cabs-bangalore", label: "Outstation cabs from Bangalore" },
+    { to: "/mini-bus-on-rent-bangalore", label: "Mini bus on rent in Bangalore" },
+    { to: "/routes", label: "All routes" },
+    { to: "/fleet", label: "Full fleet" },
+  ] as const;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {links.map((l) => (
+        <RouterLink key={l.to} to={l.to} className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-smooth hover:border-foreground/40">
+          {l.label}
+        </RouterLink>
+      ))}
+    </div>
+  );
+}

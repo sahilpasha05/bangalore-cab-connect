@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Users, Gauge, UserRound } from "lucide-react";
-import { PageHero, Section, FaqList, TableBox } from "@/components/site/Seo";
+import { PageHero, Section, FaqList, TableBox, HubLinks } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import { openBooking } from "@/lib/booking-dialog";
 import { getVehicle, vehicles, rate, inr } from "@/data/vehicles";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/vehicles/$slug")({
     const path = `/vehicles/${v.slug}`;
     const description = `${v.headline}. ${v.seats} seats, AC ${v.acRate} per km, non-AC ${v.nonAcRate} per km, driver bata ${inr(v.bata)}. Airport, outstation and local rentals with driver.`;
     return seoHead({
-      title: `${v.headline} | Price per km & Booking`,
+      title: v.seoTitle ?? `${v.headline} | Price per km & Booking`,
       description,
       path,
       ld: [
@@ -38,6 +38,8 @@ function buildFaqs(v: V): Faq[] {
     { q: `What is the ${v.name} rental price per km in Bangalore?`, a: `The ${v.name} is ${v.acRate} per km with AC and ${v.nonAcRate} per km without AC, plus driver bata of ${inr(v.bata)} per day on outstation trips. We confirm the exact fare before you book.` },
     { q: `How many people can sit in a ${v.name}?`, a: `The ${v.name} has ${v.seats} seats. It is best suited for ${v.group}, leaving room for luggage.` },
     { q: "What does driver bata mean?", a: "Driver bata is the daily allowance paid to the driver on outstation trips, charged in addition to the per-km rate." },
+    { q: `${v.name} price in Bangalore for one day`, a: `Charges are per km plus driver bata. At ${v.acRate} per km (AC), a 250 km day trip works out to about ${inr(250 * rate(v.acRate) + v.bata)} including ${inr(v.bata)} bata, before tolls and parking. We confirm the exact fare for your date and route.` },
+    { q: `AC or non-AC: which ${v.name} should I book?`, a: `AC costs ${v.acRate} per km and non-AC costs ${v.nonAcRate} per km. AC is the better choice for long highway trips and hot months, and non-AC is a lower-cost option for short city trips.` },
     { q: `Can I rent a ${v.name} for airport transfers or local use?`, a: `Yes. The ${v.name} is available for airport pickups and drops, outstation trips and local rentals in Bangalore. Share your date and pickup point and we confirm availability.` },
   ];
 }
@@ -87,6 +89,23 @@ function VehiclePage() {
         </div>
       </Section>
 
+      <Section title={`${v.name} price in Bangalore`}>
+        <TableBox>
+          <table className="w-full min-w-[480px] text-left text-sm tabular-nums">
+            <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
+              <tr><th className="px-4 py-3">Option</th><th className="px-4 py-3">Rate per km</th><th className="px-4 py-3">Driver bata (per day)</th></tr>
+            </thead>
+            <tbody>
+              <tr className="border-t border-border/60"><td className="px-4 py-3 font-medium">AC</td><td className="px-4 py-3">{v.acRate}</td><td className="px-4 py-3">{inr(v.bata)}</td></tr>
+              <tr className="border-t border-border/60"><td className="px-4 py-3 font-medium">Non AC</td><td className="px-4 py-3">{v.nonAcRate}</td><td className="px-4 py-3">{inr(v.bata)}</td></tr>
+            </tbody>
+          </table>
+        </TableBox>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Example: a 250 km day trip in AC is about {inr(250 * rate(v.acRate) + v.bata)} including bata. Tolls, parking and permits are extra.
+        </p>
+      </Section>
+
       <Section title={`${v.name} trip estimates from Bangalore`}>
         <TableBox>
           <table className="w-full min-w-[520px] text-left text-sm tabular-nums">
@@ -111,6 +130,10 @@ function VehiclePage() {
 
       <Section title="Frequently asked questions">
         <FaqList faqs={buildFaqs(v)} />
+      </Section>
+
+      <Section title="Explore more">
+        <HubLinks />
       </Section>
 
       <Section title="Other vehicles">

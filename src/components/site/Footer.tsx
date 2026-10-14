@@ -44,6 +44,9 @@ export function Footer() {
               </li>
             ))}
             <li><Link to="/routes" className="font-medium text-foreground hover:underline">All routes</Link></li>
+            <li><Link to="/drop-taxi-bangalore" className="hover:text-foreground">Drop taxi Bangalore</Link></li>
+            <li><Link to="/outstation-cabs-bangalore" className="hover:text-foreground">Outstation cabs</Link></li>
+            <li><Link to="/mini-bus-on-rent-bangalore" className="hover:text-foreground">Mini bus on rent</Link></li>
           </ul>
         </div>
         <div>
