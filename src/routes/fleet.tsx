@@ -6,7 +6,7 @@ export const Route = createFileRoute("/fleet")({
   head: () => ({
     meta: [
       { title: "Our Fleet — Bangalore Cab Rental" },
-      { name: "description", content: "Choose from sedans, Innova, Tempo Traveller and luxury coaches. Book on WhatsApp." },
+      { name: "description", content: "Choose from sedans, Innova, Tempo Traveller and luxury coaches. Book online." },
       { property: "og:title", content: "Our Fleet — Bangalore Cab Rental" },
       { property: "og:description", content: "Sedans, Innova, Tempo Traveller and coaches for every trip." },
     ],

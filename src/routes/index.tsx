@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { BookingBar } from "@/components/site/BookingBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
+import { routes } from "@/data/routes";
+import { SITE, BUSINESS } from "@/lib/seo";
 import { openBooking } from "@/lib/booking-dialog";
 import { waLink, messages } from "@/lib/whatsapp";
 import heroImg from "@/assets/hero-cab.jpg";
@@ -14,9 +16,24 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Bangalore Cab Rental — Airport, Outstation & Local Rentals" },
-      { name: "description", content: "Premium cab rental in Bangalore. Book Innova, Tempo Traveller, Sedan & Coach on WhatsApp. Trusted drivers, transparent pricing." },
+      { name: "description", content: "Premium cab rental in Bangalore. Book Innova Crysta, Tempo Traveller and buses with driver. Airport, outstation and local trips with transparent per-km rates." },
       { property: "og:title", content: "Bangalore Cab Rental — Premium Booking" },
       { property: "og:description", content: "Airport transfers, outstation trips & hourly local rentals across Bangalore." },
+    ],
+    links: [{ rel: "canonical", href: SITE + "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: BUSINESS.name,
+          url: SITE,
+          telephone: BUSINESS.phone,
+          areaServed: { "@type": "City", name: "Bangalore" },
+          description: "Cab, Innova Crysta, Tempo Traveller and bus rental with driver in Bangalore for airport, outstation and local trips.",
+        }),
+      },
     ],
   }),
   component: Index,
@@ -29,6 +46,7 @@ function Index() {
       <TrustStrip />
       <ServicesPreview />
       <FleetPreview />
+      <PopularRoutes />
       <WhyUs />
       <Testimonials />
       <FAQ />
@@ -178,6 +196,39 @@ function FleetPreview() {
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {fleet.map((v, i) => <VehicleCard key={v.name} v={v} index={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PopularRoutes() {
+  const list = routes.slice(0, 8);
+  return (
+    <section className="border-y border-border/60 bg-card">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading eyebrow="Popular routes" title="Outstation trips from Bangalore" align="left" />
+          <Link to="/routes" className="text-sm font-semibold hover:underline" style={{ color: "var(--whatsapp)" }}>
+            All routes →
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {list.map((r) => (
+            <Link
+              key={r.slug}
+              to="/routes/$slug"
+              params={{ slug: r.slug }}
+              className="group rounded-2xl border border-border/70 bg-background p-5 transition-smooth hover:-translate-y-0.5 hover:shadow-elegant"
+            >
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {r.kind === "airport" ? "Airport" : `~${r.km} km · ${r.hours}`}
+              </div>
+              <div className="mt-2 text-lg font-bold">{r.kind === "airport" ? "Airport taxi" : r.to}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{r.title}</div>
+              <div className="mt-4 text-sm font-semibold" style={{ color: "var(--whatsapp)" }}>View rates →</div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

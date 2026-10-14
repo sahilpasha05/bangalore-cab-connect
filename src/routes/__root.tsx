@@ -5,6 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/WhatsAppButton";
 import { BookingDialog } from "@/components/site/BookingDialog";
+import { StickyBookBar } from "@/components/site/StickyBookBar";
 
 function NotFoundComponent() {
   return (
@@ -35,9 +36,9 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "SWqnDS9ovNe1NMWg9p-u5-K9lzuNt1oaV557_vnI0Xk" },
       { title: "Bangalore Cab Rental — Premium Cab Booking in Bangalore" },
-      { name: "description", content: "Premium cab rental in Bangalore. Airport transfers, outstation trips & local rentals. Book instantly on WhatsApp." },
+      { name: "description", content: "Premium cab rental in Bangalore. Airport transfers, outstation trips & local rentals. Book online or call." },
       { property: "og:title", content: "Bangalore Cab Rental — Premium Cab Booking" },
-      { property: "og:description", content: "Airport transfers, outstation & local rentals. Book on WhatsApp." },
+      { property: "og:description", content: "Airport transfers, outstation & local rentals. Book online." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -55,6 +56,7 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap",
       },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       {
         rel: "stylesheet",
         href: appCss,
@@ -82,7 +84,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background pb-[68px] text-foreground md:pb-0">
       <Header />
       <main className="flex-1">
         <Outlet />
@@ -90,6 +92,7 @@ function RootComponent() {
       <Footer />
       <FloatingWhatsApp />
       <BookingDialog />
+      <StickyBookBar />
     </div>
   );
 }

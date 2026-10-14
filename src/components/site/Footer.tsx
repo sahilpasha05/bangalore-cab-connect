@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Car, Mail, Phone, MapPin } from "lucide-react";
+import { routes } from "@/data/routes";
 
 export function Footer() {
   return (
     <footer className="border-t border-border/60 bg-secondary/40">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-5 lg:px-8">
         <div>
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-hero text-primary-foreground">
@@ -32,6 +33,17 @@ export function Footer() {
             <li>Outstation Trips</li>
             <li>Local Rentals</li>
             <li>Corporate Travel</li>
+          </ul>
+        </div>
+        <div>
+          <div className="text-sm font-semibold">Popular routes</div>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            {routes.slice(0, 6).map((r) => (
+              <li key={r.slug}>
+                <Link to="/routes/$slug" params={{ slug: r.slug }} className="hover:text-foreground">{r.title}</Link>
+              </li>
+            ))}
+            <li><Link to="/routes" className="font-medium text-foreground hover:underline">All routes</Link></li>
           </ul>
         </div>
         <div>
