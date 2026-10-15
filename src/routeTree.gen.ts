@@ -17,6 +17,8 @@ import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as MiniBusOnRentBangaloreRouteImport } from './routes/mini-bus-on-rent-bangalore'
 import { Route as OutstationCabsBangaloreRouteImport } from './routes/outstation-cabs-bangalore'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as RoutesIndexRouteImport } from './routes/routes.index'
 import { Route as RoutesSlugRouteImport } from './routes/routes.$slug'
 import { Route as VehiclesSlugRouteImport } from './routes/vehicles.$slug'
@@ -61,6 +63,16 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoutesIndexRoute = RoutesIndexRouteImport.update({
   id: '/routes/',
   path: '/routes/',
@@ -86,8 +98,10 @@ export interface FileRoutesByFullPath {
   '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
   '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/routes/': typeof RoutesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -99,8 +113,10 @@ export interface FileRoutesByTo {
   '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
   '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/routes': typeof RoutesIndexRoute
 }
 export interface FileRoutesById {
@@ -113,8 +129,10 @@ export interface FileRoutesById {
   '/mini-bus-on-rent-bangalore': typeof MiniBusOnRentBangaloreRoute
   '/outstation-cabs-bangalore': typeof OutstationCabsBangaloreRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/routes/$slug': typeof RoutesSlugRoute
   '/vehicles/$slug': typeof VehiclesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/routes/': typeof RoutesIndexRoute
 }
 export interface FileRouteTypes {
@@ -128,8 +146,10 @@ export interface FileRouteTypes {
     | '/mini-bus-on-rent-bangalore'
     | '/outstation-cabs-bangalore'
     | '/services'
+    | '/blog/$slug'
     | '/routes/$slug'
     | '/vehicles/$slug'
+    | '/blog/'
     | '/routes/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -141,8 +161,10 @@ export interface FileRouteTypes {
     | '/mini-bus-on-rent-bangalore'
     | '/outstation-cabs-bangalore'
     | '/services'
+    | '/blog/$slug'
     | '/routes/$slug'
     | '/vehicles/$slug'
+    | '/blog'
     | '/routes'
   id:
     | '__root__'
@@ -154,8 +176,10 @@ export interface FileRouteTypes {
     | '/mini-bus-on-rent-bangalore'
     | '/outstation-cabs-bangalore'
     | '/services'
+    | '/blog/$slug'
     | '/routes/$slug'
     | '/vehicles/$slug'
+    | '/blog/'
     | '/routes/'
   fileRoutesById: FileRoutesById
 }
@@ -168,8 +192,10 @@ export interface RootRouteChildren {
   MiniBusOnRentBangaloreRoute: typeof MiniBusOnRentBangaloreRoute
   OutstationCabsBangaloreRoute: typeof OutstationCabsBangaloreRoute
   ServicesRoute: typeof ServicesRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   RoutesSlugRoute: typeof RoutesSlugRoute
   VehiclesSlugRoute: typeof VehiclesSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   RoutesIndexRoute: typeof RoutesIndexRoute
 }
 
@@ -231,6 +257,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/routes/': {
       id: '/routes/'
       path: '/routes'
@@ -264,8 +304,10 @@ const rootRouteChildren: RootRouteChildren = {
   MiniBusOnRentBangaloreRoute: MiniBusOnRentBangaloreRoute,
   OutstationCabsBangaloreRoute: OutstationCabsBangaloreRoute,
   ServicesRoute: ServicesRoute,
+  BlogSlugRoute: BlogSlugRoute,
   RoutesSlugRoute: RoutesSlugRoute,
   VehiclesSlugRoute: VehiclesSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   RoutesIndexRoute: RoutesIndexRoute,
 }
 export const routeTree = rootRouteImport

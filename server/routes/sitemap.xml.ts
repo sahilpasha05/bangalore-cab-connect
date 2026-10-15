@@ -1,6 +1,7 @@
 import { defineHandler } from "nitro/h3";
 import { routes } from "../../src/data/routes";
 import { vehicles } from "../../src/data/vehicles";
+import { posts } from "../../src/data/posts";
 
 const SITE = "https://www.bangalorecabrental.com";
 
@@ -14,9 +15,11 @@ export default defineHandler(() => {
     { path: "/drop-taxi-bangalore", priority: "0.9" },
     { path: "/outstation-cabs-bangalore", priority: "0.9" },
     { path: "/mini-bus-on-rent-bangalore", priority: "0.8" },
+    { path: "/blog", priority: "0.7" },
     { path: "/contact", priority: "0.6" },
     ...routes.map((r) => ({ path: `/routes/${r.slug}`, priority: "0.8" })),
     ...vehicles.map((v) => ({ path: `/vehicles/${v.slug}`, priority: "0.8" })),
+    ...posts.map((p) => ({ path: `/blog/${p.slug}`, priority: "0.7" })),
   ];
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
