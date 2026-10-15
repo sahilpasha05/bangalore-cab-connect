@@ -2,16 +2,25 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { waLink, messages } from "@/lib/whatsapp";
+import { openBooking } from "@/lib/booking-dialog";
+import { FaqList, HubLinks } from "@/components/site/Seo";
+import { breadcrumbLd, faqLd, seoHead, type Faq } from "@/lib/seo";
+
+const faqs: Faq[] = [
+  { q: "How do I book a cab with Bangalore Cab Rental?", a: "Call +91 81231 40946, message us on WhatsApp, or use the Book Now form on this site. Share your date, pickup and drop and we confirm the vehicle and fare before you travel." },
+  { q: "How early should I book?", a: "For airport and local trips, as early as you can. For outstation trips, at least 4 hours in advance is recommended, and a day or more for weekends, holidays and large groups." },
+  { q: "Which areas of Bangalore do you cover?", a: "We cover all of Bangalore, including Whitefield, Electronic City, Indiranagar, Koramangala, Jayanagar, Yelahanka and the airport at Devanahalli, plus trips across Karnataka and neighbouring states." },
+  { q: "Are you available on weekends and holidays?", a: "Yes. We operate 24x7, including weekends and public holidays." },
+];
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Bangalore Cab Rental" },
-      { name: "description", content: "Get in touch with Bangalore Cab Rental. Call, email or WhatsApp us — 24×7." },
-      { property: "og:title", content: "Contact — Bangalore Cab Rental" },
-      { property: "og:description", content: "Reach us 24×7 on WhatsApp, phone or email." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Contact Bangalore Cab Rental | Call, WhatsApp or Book Online",
+      description: "Call +91 81231 40946, message on WhatsApp or book online. Cab, Tempo Traveller and bus rental in Bangalore, available 24x7.",
+      path: "/contact",
+      ld: [breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]), faqLd(faqs)],
+    }),
   component: ContactPage,
 });
 
@@ -53,6 +62,40 @@ function ContactPage() {
             )}
           </div>
         ))}
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight">How to book</h2>
+        <ol className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Tell us the trip", "Share your date, pickup point, drop and number of people."],
+            ["Choose a vehicle", "Innova Crysta for up to 6, Tempo Traveller for 8 to 12, buses for larger groups."],
+            ["Get the fare", "We confirm the vehicle and fare before you travel."],
+            ["Travel", "The driver reaches your pickup point on time and shares the trip details."],
+          ].map(([t, d], i) => (
+            <li key={t} className="rounded-xl border border-border/70 bg-card p-4">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Step {i + 1}</div>
+              <div className="mt-1 font-bold">{t}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+            </li>
+          ))}
+        </ol>
+        <Button size="lg" onClick={() => openBooking()} className="mt-6 h-12 gradient-cta border-0 px-8 font-semibold text-whatsapp-foreground">
+          Book online
+        </Button>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight">Areas we serve</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          Pickups across Bangalore including Whitefield, Electronic City, Indiranagar, Koramangala, Jayanagar, JP Nagar, Yelahanka, Hebbal and Devanahalli (Kempegowda International Airport), and trips to Mysore, Coorg, Ooty, Chikmagalur, Tirupati, Chennai and more.
+        </p>
+        <div className="mt-4"><HubLinks /></div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6 lg:px-8">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight">Contact questions</h2>
+        <FaqList faqs={faqs} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">

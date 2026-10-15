@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
+import { breadcrumbLd, seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/fleet")({
-  head: () => ({
-    meta: [
-      { title: "Our Fleet — Bangalore Cab Rental" },
-      { name: "description", content: "Choose from sedans, Innova, Tempo Traveller and luxury coaches. Book online." },
-      { property: "og:title", content: "Our Fleet — Bangalore Cab Rental" },
-      { property: "og:description", content: "Sedans, Innova, Tempo Traveller and coaches for every trip." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Our Fleet | Innova Crysta, Tempo Traveller & Buses in Bangalore",
+      description: "Innova Crysta, Tempo Traveller, Force Urbania and 22 to 50 seater buses on rent in Bangalore, with per-km rates and driver bata.",
+      path: "/fleet",
+      ld: [breadcrumbLd([{ name: "Home", path: "/" }, { name: "Fleet", path: "/fleet" }])],
+    }),
   component: FleetPage,
 });
 

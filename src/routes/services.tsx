@@ -3,16 +3,17 @@ import { Plane, MapPin, Clock, Briefcase, Heart, Calendar, MessageCircle } from 
 import { Button } from "@/components/ui/button";
 import { openBooking } from "@/lib/booking-dialog";
 import { messages } from "@/lib/whatsapp";
+import { HubLinks } from "@/components/site/Seo";
+import { breadcrumbLd, seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Bangalore Cab Rental" },
-      { name: "description", content: "Airport transfers, outstation, local rentals, corporate, weddings & events. Book online." },
-      { property: "og:title", content: "Services — Bangalore Cab Rental" },
-      { property: "og:description", content: "Cab services for every occasion across Bangalore and Karnataka." },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      title: "Cab Services in Bangalore | Airport, Outstation, Local & Corporate",
+      description: "Airport transfers, outstation trips, local hourly rentals, corporate travel, weddings and group tours in Bangalore. Cab, Tempo Traveller and bus with driver.",
+      path: "/services",
+      ld: [breadcrumbLd([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }])],
+    }),
   component: ServicesPage,
 });
 
@@ -53,6 +54,11 @@ function ServicesPage() {
             </div>
           ))}
         </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight">Popular pages</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">Rates, distances and trip estimates for the routes and vehicles customers ask about most.</p>
+        <div className="mt-4"><HubLinks /></div>
       </section>
     </>
   );
