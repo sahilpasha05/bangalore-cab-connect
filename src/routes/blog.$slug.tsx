@@ -3,6 +3,7 @@ import { Section, FaqList, Breadcrumbs, TableBox, HubLinks } from "@/components/
 import { Button } from "@/components/ui/button";
 import { openBooking } from "@/lib/booking-dialog";
 import { getPost, posts, type Block } from "@/data/posts";
+import { getRoute } from "@/data/routes";
 import { breadcrumbLd, faqLd, seoHead, SITE, BUSINESS } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -95,7 +96,7 @@ function PostPage() {
         <div className="mt-10 rounded-2xl gradient-hero p-6 text-white">
           <p className="text-lg font-semibold">Planning this trip? Share your dates and pickup point and we confirm the fare.</p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button onClick={() => openBooking(p.route ? { drop: "Coorg" } : {})} className="gradient-cta border-0 font-semibold text-whatsapp-foreground">Book this trip</Button>
+            <Button onClick={() => openBooking(p.route ? { drop: getRoute(p.route)?.to } : {})} className="gradient-cta border-0 font-semibold text-whatsapp-foreground">Book this trip</Button>
             {p.route && (
               <Link to="/routes/$slug" params={{ slug: p.route }} className="inline-flex items-center rounded-md border border-white/30 px-4 text-sm font-semibold hover:bg-white/10">
                 See full rates for this route
