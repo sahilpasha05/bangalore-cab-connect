@@ -6,7 +6,9 @@ import { BookingBar } from "@/components/site/BookingBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
 import { routes } from "@/data/routes";
-import { SITE, BUSINESS } from "@/lib/seo";
+import { SITE, BUSINESS, faqLd } from "@/lib/seo";
+import { GroupGuide, HubLinks } from "@/components/site/Seo";
+import { vehicles, rate, inr } from "@/data/vehicles";
 import { openBooking } from "@/lib/booking-dialog";
 import { waLink, messages } from "@/lib/whatsapp";
 import heroImg from "@/assets/hero-cab.jpg";
@@ -22,6 +24,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: SITE + "/" }],
     scripts: [
+      { type: "application/ld+json", children: JSON.stringify(faqLd(homeFaqs)) },
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -30,6 +33,12 @@ export const Route = createFileRoute("/")({
           name: BUSINESS.name,
           url: SITE,
           telephone: BUSINESS.phone,
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            opens: "00:00",
+            closes: "23:59",
+          },
           logo: SITE + "/logo.png",
           image: SITE + "/og-image.png",
           areaServed: { "@type": "City", name: "Bangalore" },
@@ -46,11 +55,14 @@ function Index() {
     <>
       <Hero />
       <TrustStrip />
+      <Overview />
       <ServicesPreview />
       <FleetPreview />
       <PopularRoutes />
+      <HowItWorks />
       <WhyUs />
       <Testimonials />
+      <AreasAndGuides />
       <FAQ />
       <CTASection />
     </>
@@ -301,14 +313,21 @@ function Testimonials() {
   );
 }
 
+const innovaV = vehicles.find((v) => v.name === "Innova Crysta")!;
+const homeFaqs = [
+  { q: "How do I book a cab?", a: "Tap any 'Book Now' button and fill in your trip details. We'll confirm your fare and driver details within minutes." },
+  { q: "Do you provide outstation cabs?", a: "Yes — Coorg, Ooty, Mysuru, Chikmagalur, Wayanad and more. Both one-way and round-trip available." },
+  { q: "Are the drivers verified?", a: "All our drivers are background-verified, licensed and trained in Bangalore routes." },
+  { q: "What payment methods do you accept?", a: "Cash, UPI, bank transfer and corporate billing for monthly clients." },
+  { q: "Is there a cancellation fee?", a: "Free cancellation up to 2 hours before pickup for local trips. Outstation has a small driver allowance." },
+  { q: "Which vehicles can I rent in Bangalore?", a: "Innova Crysta (7 seats), Tempo Traveller and Force Urbania (12 seats), and 22, 25, 33, 40, 45 and 50 seater buses, all with driver." },
+  { q: "How are outstation fares calculated?", a: `Outstation trips are charged per km plus driver bata per day. For example, the Innova Crysta is ${innovaV.acRate} per km with AC and ${inr(innovaV.bata)} bata per day. Tolls and parking are extra, and we confirm the exact fare before you book.` },
+  { q: "Do you offer airport pickups and drops?", a: "Yes. We cover Kempegowda International Airport pickups and drops at any hour. Share your flight number when you book." },
+  { q: "Can I book a one-way drop taxi from Bangalore?", a: "Yes. Tell us your destination and date and we quote the one-way fare. See our drop taxi page for popular routes." },
+];
+
 function FAQ() {
-  const faqs = [
-    { q: "How do I book a cab?", a: "Tap any 'Book Now' button and fill in your trip details. We'll confirm your fare and driver details within minutes." },
-    { q: "Do you provide outstation cabs?", a: "Yes — Coorg, Ooty, Mysuru, Chikmagalur, Wayanad and more. Both one-way and round-trip available." },
-    { q: "Are the drivers verified?", a: "All our drivers are background-verified, licensed and trained in Bangalore routes." },
-    { q: "What payment methods do you accept?", a: "Cash, UPI, bank transfer and corporate billing for monthly clients." },
-    { q: "Is there a cancellation fee?", a: "Free cancellation up to 2 hours before pickup for local trips. Outstation has a small driver allowance." },
-  ];
+  const faqs = homeFaqs;
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
@@ -357,6 +376,82 @@ function CTASection() {
             </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function Overview() {
+  return (
+    <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Cab, Tempo Traveller and bus rental in Bangalore, with driver</h2>
+      <div className="mt-5 space-y-4 leading-relaxed text-foreground/90">
+        <p>
+          Bangalore Cab Rental provides cars, vans and buses with a driver for three kinds of trips: airport transfers, outstation journeys and local rentals within the city. Every booking is confirmed with the vehicle, driver and fare before you travel, so there is nothing to guess on the day.
+        </p>
+        <p>
+          For families and small groups the Innova Crysta seats seven and starts at {innovaV.acRate} per km with AC. Larger groups usually choose a{" "}
+          <Link to="/vehicles/$slug" params={{ slug: "tempo-traveller-on-rent-bangalore" }} className="font-semibold underline">Tempo Traveller</Link> or Force Urbania, which seat twelve. For weddings, corporate outings and college tours we have{" "}
+          <Link to="/mini-bus-on-rent-bangalore" className="font-semibold underline">22 to 50 seater buses</Link>, so a whole group can travel together in one vehicle.
+        </p>
+        <p>
+          Most weekend trips from Bangalore head to{" "}
+          <Link to="/routes/$slug" params={{ slug: "bangalore-to-mysore-cab" }} className="font-semibold underline">Mysore</Link>,{" "}
+          <Link to="/routes/$slug" params={{ slug: "bangalore-to-coorg-cab" }} className="font-semibold underline">Coorg</Link>,{" "}
+          <Link to="/routes/$slug" params={{ slug: "bangalore-to-ooty-cab" }} className="font-semibold underline">Ooty</Link> and{" "}
+          <Link to="/routes/$slug" params={{ slug: "bangalore-to-chikmagalur-cab" }} className="font-semibold underline">Chikmagalur</Link>. Each route page shows the distance, drive time, best season and a rate table for every vehicle. If you only need a one-way ride, our{" "}
+          <Link to="/drop-taxi-bangalore" className="font-semibold underline">drop taxi</Link> service takes you to your destination without keeping the vehicle for the return.
+        </p>
+        <p>
+          Airport trips are covered at any hour. Share your flight number and pickup address, and the driver is at the pickup point on time for departures or waiting at arrivals. See{" "}
+          <Link to="/routes/$slug" params={{ slug: "bangalore-airport-taxi" }} className="font-semibold underline">Bangalore airport taxi</Link> for distances from popular areas and how pickup works.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function HowItWorks() {
+  const steps = [
+    { t: "Tell us the trip", d: "Share your date, pickup point, drop and number of people." },
+    { t: "Pick a vehicle", d: "Choose from the guide below, or let us suggest one for your group." },
+    { t: "Get a confirmed fare", d: "We confirm the vehicle and fare before you travel." },
+    { t: "Travel with a driver", d: "Your driver reaches the pickup point on time and shares the trip details." },
+  ];
+  return (
+    <section className="gradient-soft">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <SectionHeading eyebrow="How it works" title="Book in four simple steps" />
+        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((x, i) => (
+            <li key={x.t} className="rounded-2xl border border-border/70 bg-card p-5 shadow-card">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Step {i + 1}</div>
+              <div className="mt-1 font-bold">{x.t}</div>
+              <p className="mt-1.5 text-sm text-muted-foreground">{x.d}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="mx-auto mt-12 max-w-3xl">
+          <h3 className="mb-4 text-center text-xl font-bold">Which vehicle for your group?</h3>
+          <GroupGuide />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AreasAndGuides() {
+  return (
+    <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Areas we serve</h2>
+      <p className="mt-4 leading-relaxed text-foreground/90">
+        We pick up from across Bangalore, including Whitefield, Electronic City, Indiranagar, Koramangala, Jayanagar, JP Nagar, Yelahanka, Hebbal and Devanahalli near the airport. From Bangalore we run trips across Karnataka and to neighbouring states, such as Tirupati, Chennai, Pondicherry, Coimbatore and Goa.
+      </p>
+      <h3 className="mt-8 text-lg font-bold">Plan your trip</h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Read our{" "}
+        <Link to="/blog/$slug" params={{ slug: "bangalore-to-coorg-taxi-fare" }} className="font-semibold underline">Bangalore to Coorg taxi fare guide</Link> for a worked fare example and a two-day plan, or browse every route and vehicle below.
+      </p>
+      <div className="mt-4"><HubLinks /></div>
     </section>
   );
 }
