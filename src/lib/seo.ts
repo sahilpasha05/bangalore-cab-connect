@@ -1,7 +1,7 @@
 export const SITE = "https://www.bangalorecabrental.com";
 export const BUSINESS = {
   name: "Bangalore Cab Rental",
-  phone: "+918123140946",
+  phone: "+918147260587",
 };
 
 export type Crumb = { name: string; path: string };

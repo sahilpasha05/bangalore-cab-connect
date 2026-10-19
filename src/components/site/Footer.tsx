@@ -48,7 +48,7 @@ export function Footer() {
         <div>
           <div className="text-sm font-semibold">Contact</div>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /><span>+91 81231 40946</span></li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /><span>+91 81472 60587</span></li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4" /><span>chandrshekar45555@gmail.com</span></li>
             <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /><span>Bangalore, Karnataka</span></li>
           </ul>

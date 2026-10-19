@@ -7,7 +7,7 @@ import { FaqList, HubLinks } from "@/components/site/Seo";
 import { breadcrumbLd, faqLd, seoHead, type Faq } from "@/lib/seo";
 
 const faqs: Faq[] = [
-  { q: "How do I book a cab with Bangalore Cab Rental?", a: "Call +91 81231 40946, message us on WhatsApp, or use the Book Now form on this site. Share your date, pickup and drop and we confirm the vehicle and fare before you travel." },
+  { q: "How do I book a cab with Bangalore Cab Rental?", a: "Call +91 81472 60587, message us on WhatsApp, or use the Book Now form on this site. Share your date, pickup and drop and we confirm the vehicle and fare before you travel." },
   { q: "How early should I book?", a: "For airport and local trips, as early as you can. For outstation trips, at least 4 hours in advance is recommended, and a day or more for weekends, holidays and large groups." },
   { q: "Which areas of Bangalore do you cover?", a: "We cover all of Bangalore, including Whitefield, Electronic City, Indiranagar, Koramangala, Jayanagar, Yelahanka and the airport at Devanahalli, plus trips across Karnataka and neighbouring states." },
   { q: "Are you available on weekends and holidays?", a: "Yes. We operate 24x7, including weekends and public holidays." },
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     seoHead({
       title: "Contact Bangalore Cab Rental | Call, WhatsApp or Book Online",
-      description: "Call +91 81231 40946, message on WhatsApp or book online. Cab, Tempo Traveller and bus rental in Bangalore, available 24x7.",
+      description: "Call +91 81472 60587, message on WhatsApp or book online. Cab, Tempo Traveller and bus rental in Bangalore, available 24x7.",
       path: "/contact",
       ld: [breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]), faqLd(faqs)],
     }),
@@ -37,8 +37,8 @@ function ContactPage() {
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:px-6 md:grid-cols-2 lg:px-8">
         {[
-          { icon: MessageCircle, title: "WhatsApp", value: "+91 81231 40946", action: "Chat now", href: waLink(messages.general), highlight: true },
-          { icon: Phone, title: "Call us", value: "+91 81231 40946", action: "Call now", href: "tel:+918123140946" },
+          { icon: MessageCircle, title: "WhatsApp", value: "+91 81472 60587", action: "Chat now", href: waLink(messages.general), highlight: true },
+          { icon: Phone, title: "Call us", value: "+91 81472 60587", action: "Call now", href: "tel:+918147260587" },
           { icon: Mail, title: "Email", value: "chandrshekar45555@gmail.com", action: "Send email", href: "mailto:chandrshekar45555@gmail.com" },
           { icon: MapPin, title: "Based in", value: "Bangalore, Karnataka", action: "Service area: All of Bangalore + Karnataka" },
         ].map((c, i) => (

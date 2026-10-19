@@ -53,7 +53,7 @@ export function PageHero({ crumbs, eyebrow, title, lead, chips, prefill }: {
           </Button>
           <a href={callLink()}>
             <Button size="lg" variant="outline" className="h-12 w-full gap-2 border-white/25 bg-white/5 px-7 text-base font-semibold text-white hover:bg-white/15 hover:text-white">
-              <Phone className="h-5 w-5" /> Call +91 81231 40946
+              <Phone className="h-5 w-5" /> Call +91 81472 60587
             </Button>
           </a>
         </div>
