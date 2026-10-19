@@ -1,5 +1,5 @@
 import { vehicles, rate, inr } from "@/data/vehicles";
-import { getRoute } from "@/data/routes";
+import { getRoute, areaDistances } from "@/data/routes";
 
 export type Block =
   | { t: "h2"; text: string }
@@ -241,6 +241,75 @@ export const posts: Post[] = [
         "Ask about night halt charges if the driver will stay overnight.",
         "For a relaxed trip, plan no more than 8 to 9 hours of driving a day.",
       ] },
+    ],
+  },
+  {
+    slug: "bangalore-airport-taxi-guide",
+    title: "Bangalore Airport Taxi Guide: Distance, Time, Booking and Vehicle Choice",
+    description:
+      "How to book a taxi to or from Kempegowda International Airport, Bangalore: distance from major areas, travel time, which vehicle to choose, and tips for early flights and late arrivals.",
+    date: "2026-10-20",
+    readMins: 5,
+    route: "bangalore-airport-taxi",
+    faqs: [
+      {
+        q: "How far is Bangalore airport from the city?",
+        a: "Kempegowda International Airport is in Devanahalli, about 35 to 60 km from most parts of Bangalore. From MG Road it is roughly 35 to 40 km, and from Electronic City about 60 km.",
+      },
+      {
+        q: "How long does it take to reach Bangalore airport by taxi?",
+        a: "Usually 1 to 1.5 hours. Late at night it can be under an hour, while the 7 to 10 AM and 5 to 9 PM rush hours can add a lot of time.",
+      },
+      {
+        q: "Can I pre-book an airport taxi for a late-night or early-morning flight?",
+        a: "Yes. Pre-booking means the driver is waiting when you land, or reaches your home on time for an early flight. Airport pickups and drops run at any hour.",
+      },
+      {
+        q: "Which vehicle should I book for the airport?",
+        a: "A sedan or Innova Crysta suits up to 6 people with luggage. A Tempo Traveller or Force Urbania suits 8 to 12 people. Larger groups can use a mini bus.",
+      },
+      {
+        q: "How is the airport taxi fare decided?",
+        a: "The fare depends on your pickup or drop area, the vehicle and any waiting time. Tolls and parking are charged on actuals. Share your area and flight time and we confirm the price before you travel.",
+      },
+    ],
+    body: [
+      { t: "p", text: "Kempegowda International Airport (BLR) is in Devanahalli, well outside the city, so the ride is long and the timing matters. This guide covers how far it is from major areas, how long to allow, which vehicle to choose and how to avoid the common problems with early flights and late arrivals." },
+      { t: "h2", text: "Distance and time from major areas" },
+      {
+        t: "table",
+        head: ["Area", "Distance to airport", "Typical time"],
+        rows: areaDistances.map((a) => [a.area, a.km, a.time]),
+      },
+      { t: "note", text: "Times are typical figures without heavy traffic. Allow extra during the 7 to 10 AM and 5 to 9 PM peaks." },
+      { t: "h2", text: "Which vehicle should you book?" },
+      {
+        t: "table",
+        head: ["Group size", "Best vehicle", "Why"],
+        rows: [
+          ["1 to 4 people", "Sedan", "Comfortable and the most economical for a small group"],
+          ["Up to 6 people with luggage", v("Innova Crysta").name, `${v("Innova Crysta").seats} seats and good boot space`],
+          ["8 to 12 people", "Tempo Traveller or Force Urbania", "Everyone travels together with room for bags"],
+          ["15 or more", "Mini bus", "One vehicle for a group or a family function"],
+        ],
+      },
+      { t: "h2", text: "How airport taxi pricing works" },
+      { t: "ul", items: [
+        "The price depends on your area, the vehicle type and the time of travel.",
+        "Waiting time for a delayed flight is usually charged separately, so share your flight number when you book.",
+        "Tolls and parking are charged on actuals.",
+        "We confirm the price when you book, so there is no surprise at the end of the trip.",
+      ] },
+      { t: "h2", text: "Tips for a smooth airport trip" },
+      { t: "ul", items: [
+        "For an early flight, book the cab the day before and confirm the pickup time.",
+        "Leave earlier than you think. Allow about 1.5 to 2 hours of travel from the far side of the city in peak traffic.",
+        "For arrivals, share your flight number and terminal so the driver can track the landing.",
+        "Keep the driver's number handy so you can meet quickly after you collect your bags.",
+        "For a group with a lot of luggage, choose the next size up.",
+      ] },
+      { t: "h2", text: "Airport drop and pickup in one booking" },
+      { t: "p", text: "If you are travelling out and back, you can book both legs together. Tell us your drop time and your return flight, and the driver will be there on both days. For trips that go beyond the city, such as an airport arrival followed by a drive to Mysore or Coorg, we quote the whole journey as one trip." },
     ],
   },
 ];
