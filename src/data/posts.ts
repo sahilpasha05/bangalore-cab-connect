@@ -174,6 +174,75 @@ export const posts: Post[] = [
       ] },
     ],
   },
+  {
+    slug: "tempo-traveller-12-seater-price-bangalore",
+    title: "Tempo Traveller 12 Seater Price in Bangalore: Rates and Sample Fares",
+    description:
+      "Tempo Traveller 12 seater rental price in Bangalore: per-km rate, driver bata, sample fares for popular outstation trips and what changes the final price.",
+    date: "2026-10-20",
+    readMins: 5,
+    route: "bangalore-to-coorg-cab",
+    faqs: [
+      {
+        q: "What is the Tempo Traveller 12 seater price in Bangalore?",
+        a: `Our listed rate for a Tempo Traveller is ${v("Tempo Traveller").acRate} per km for AC, plus driver bata of ${inr(v("Tempo Traveller").bata)} per day. The final fare depends on the route, the number of days and the total km.`,
+      },
+      {
+        q: "How is the outstation fare calculated?",
+        a: "Outstation trips are charged on the round-trip distance (to and back) at the per-km rate, plus driver bata for each day. Tolls, parking and state entry fees are extra on actuals.",
+      },
+      {
+        q: "How many people fit in a Tempo Traveller?",
+        a: "The standard Tempo Traveller seats 12 passengers plus the driver. With luggage for a long trip, 10 to 12 people is comfortable.",
+      },
+      {
+        q: "Is a Tempo Traveller cheaper than two cars?",
+        a: "For a group of 9 to 12 it usually is, and everyone stays together. For 6 or fewer people, an Innova Crysta is normally the better value.",
+      },
+    ],
+    body: [
+      { t: "p", text: "A 12 seater Tempo Traveller is the most booked vehicle for family trips, office outings and pilgrimages from Bangalore. This guide explains how the price is worked out and gives sample fares for popular trips." },
+      { t: "h2", text: "Tempo Traveller rental rates" },
+      {
+        t: "table",
+        head: ["Vehicle", "Seats", "AC rate / km", "Driver bata / day"],
+        rows: [["Tempo Traveller", String(v("Tempo Traveller").seats), v("Tempo Traveller").acRate, inr(v("Tempo Traveller").bata)]],
+      },
+      { t: "h2", text: "Sample outstation fares (2-day round trip)" },
+      { t: "p", text: "Estimates use the full round-trip distance at our AC per-km rate plus two days of driver bata. Tolls and parking are extra." },
+      {
+        t: "table",
+        head: ["Trip", "One-way km", "2-day estimate"],
+        rows: ["bangalore-to-mysore-cab", "bangalore-to-coorg-cab", "bangalore-to-ooty-cab", "bangalore-to-chikmagalur-cab", "bangalore-to-tirupati-cab"].map((slug) => {
+          const r = getRoute(slug)!;
+          const t = v("Tempo Traveller");
+          return ["Bangalore to " + r.to, String(r.km), inr(r.km * 2 * rate(t.acRate) + t.bata * 2)];
+        }),
+      },
+      { t: "note", text: "These are indicative estimates from published per-km rates. The final fare is confirmed when you book." },
+      { t: "h2", text: "What changes the price" },
+      { t: "ul", items: [
+        "Total km: the round-trip distance plus any local sightseeing at the destination.",
+        "Number of days: each day adds driver bata.",
+        "AC or non-AC: non-AC has a lower per-km rate.",
+        "Season: weekends, long weekends and festivals fill up early, so book ahead.",
+        "Tolls, parking and state entry fees: charged on actuals.",
+      ] },
+      { t: "h2", text: "Tempo Traveller or something else?" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["Up to 6 people", "Innova Crysta"],
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+      ] },
+      { t: "h2", text: "Tips before you book" },
+      { t: "ul", items: [
+        "Share your pickup point, dates and the places you want to visit, so we can quote the full km.",
+        "Confirm luggage: 12 people with large bags may need a second vehicle or a luggage carrier.",
+        "Ask about night halt charges if the driver will stay overnight.",
+        "For a relaxed trip, plan no more than 8 to 9 hours of driving a day.",
+      ] },
+    ],
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
