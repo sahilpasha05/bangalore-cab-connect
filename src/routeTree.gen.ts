@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CarRentalWithDriverBangaloreRouteImport } from './routes/car-rental-with-driver-bangalore'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DropTaxiBangaloreRouteImport } from './routes/drop-taxi-bangalore'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -33,6 +34,12 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CarRentalWithDriverBangaloreRoute =
+  CarRentalWithDriverBangaloreRouteImport.update({
+    id: '/car-rental-with-driver-bangalore',
+    path: '/car-rental-with-driver-bangalore',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -92,6 +99,7 @@ const VehiclesSlugRoute = VehiclesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/car-rental-with-driver-bangalore': typeof CarRentalWithDriverBangaloreRoute
   '/contact': typeof ContactRoute
   '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
@@ -107,6 +115,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/car-rental-with-driver-bangalore': typeof CarRentalWithDriverBangaloreRoute
   '/contact': typeof ContactRoute
   '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
@@ -123,6 +132,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/car-rental-with-driver-bangalore': typeof CarRentalWithDriverBangaloreRoute
   '/contact': typeof ContactRoute
   '/drop-taxi-bangalore': typeof DropTaxiBangaloreRoute
   '/fleet': typeof FleetRoute
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/car-rental-with-driver-bangalore'
     | '/contact'
     | '/drop-taxi-bangalore'
     | '/fleet'
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/car-rental-with-driver-bangalore'
     | '/contact'
     | '/drop-taxi-bangalore'
     | '/fleet'
@@ -170,6 +182,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/car-rental-with-driver-bangalore'
     | '/contact'
     | '/drop-taxi-bangalore'
     | '/fleet'
@@ -186,6 +199,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  CarRentalWithDriverBangaloreRoute: typeof CarRentalWithDriverBangaloreRoute
   ContactRoute: typeof ContactRoute
   DropTaxiBangaloreRoute: typeof DropTaxiBangaloreRoute
   FleetRoute: typeof FleetRoute
@@ -213,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/car-rental-with-driver-bangalore': {
+      id: '/car-rental-with-driver-bangalore'
+      path: '/car-rental-with-driver-bangalore'
+      fullPath: '/car-rental-with-driver-bangalore'
+      preLoaderRoute: typeof CarRentalWithDriverBangaloreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -298,6 +319,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  CarRentalWithDriverBangaloreRoute: CarRentalWithDriverBangaloreRoute,
   ContactRoute: ContactRoute,
   DropTaxiBangaloreRoute: DropTaxiBangaloreRoute,
   FleetRoute: FleetRoute,

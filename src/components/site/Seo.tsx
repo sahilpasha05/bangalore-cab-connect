@@ -151,6 +151,7 @@ export function GroupGuide() {
 
 export function HubLinks() {
   const links = [
+    { to: "/car-rental-with-driver-bangalore", label: "Car rental with driver" },
     { to: "/drop-taxi-bangalore", label: "Drop taxi from Bangalore" },
     { to: "/outstation-cabs-bangalore", label: "Outstation cabs from Bangalore" },
     { to: "/mini-bus-on-rent-bangalore", label: "Mini bus on rent in Bangalore" },

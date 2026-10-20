@@ -12,6 +12,7 @@ export default defineHandler(() => {
     { path: "/fleet", priority: "0.9" },
     { path: "/services", priority: "0.8" },
     { path: "/routes", priority: "0.9" },
+    { path: "/car-rental-with-driver-bangalore", priority: "0.9" },
     { path: "/drop-taxi-bangalore", priority: "0.9" },
     { path: "/outstation-cabs-bangalore", priority: "0.9" },
     { path: "/mini-bus-on-rent-bangalore", priority: "0.8" },
