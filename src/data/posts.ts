@@ -37,6 +37,89 @@ const ofare = (n: string, days: number) => {
 };
 const pick = ["Innova Crysta", "Tempo Traveller", "Force Urbania", "22 Seater"];
 
+const routeFare = (slug: string, n: string, days: number) => {
+  const r = getRoute(slug)!;
+  const x = v(n);
+  return r.km * 2 * rate(x.acRate) + x.bata * days;
+};
+
+const highwayPost = (o: {
+  slug: string;
+  routeSlug: string;
+  title: string;
+  description: string;
+  days: number;
+  readMins: number;
+  lead: string;
+  oneWay: string;
+  plan: string[];
+  tips: string[];
+  extraFaq: { q: string; a: string };
+}): Post => {
+  const r = getRoute(o.routeSlug)!;
+  return {
+    slug: o.slug,
+    title: o.title,
+    description: o.description,
+    date: "2026-10-20",
+    readMins: o.readMins,
+    route: o.routeSlug,
+    faqs: [
+      {
+        q: `What is the taxi fare from Bangalore to ${r.to}?`,
+        a: `For a ${o.days}-day round trip of about ${r.km * 2} km, an Innova Crysta works out to roughly ${inr(routeFare(o.routeSlug, "Innova Crysta", o.days))} and a Tempo Traveller to roughly ${inr(routeFare(o.routeSlug, "Tempo Traveller", o.days))} at our listed AC rates, before tolls and parking. One-way drops are quoted on request.`,
+      },
+      {
+        q: `How far is ${r.to} from Bangalore?`,
+        a: `${r.to} is about ${r.km} km from Bangalore and takes ${r.hours} by road, via ${r.via}.`,
+      },
+      o.extraFaq,
+      {
+        q: `Which vehicle is best for a trip to ${r.to}?`,
+        a: "An Innova Crysta suits up to 6 people. A Tempo Traveller or Force Urbania suits 8 to 12. Larger groups are usually cheaper per person in a 22 seater or bigger bus.",
+      },
+    ],
+    body: [
+      { t: "p", text: o.lead },
+      { t: "h2", text: `Bangalore to ${r.to} taxi fare (${o.days}-day round trip)` },
+      { t: "p", text: `The estimates below use our listed AC per-km rate on the full ${r.km * 2} km round trip, plus ${o.days} days of driver bata. Tolls and parking are extra.` },
+      {
+        t: "table",
+        head: ["Vehicle", "Seats", "AC rate / km", "Driver bata / day", `${o.days}-day estimate`],
+        rows: pick.map((n) => [n, String(v(n).seats), v(n).acRate, inr(v(n).bata), inr(routeFare(o.routeSlug, n, o.days))]),
+      },
+      { t: "note", text: "These are indicative estimates from published per-km rates. The final fare is confirmed when you book and depends on your date, pickup point and stops." },
+      { t: "h2", text: "One-way drop or round trip?" },
+      { t: "p", text: o.oneWay },
+      { t: "h2", text: "What changes the fare" },
+      { t: "ul", items: [
+        "Vehicle type: a 12-seater costs more per km than a 7-seater, but is usually cheaper per person for a group.",
+        "One-way or round trip: a drop is quoted differently from a return journey.",
+        "Number of days: each day adds driver bata.",
+        "AC or non-AC: non-AC has a lower per-km rate.",
+        "Tolls and parking: charged on actuals and not part of the per-km rate.",
+      ] },
+      { t: "h2", text: "Which vehicle should you choose?" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["Up to 6 people", "Innova Crysta"],
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+        ["25 or more", "25 to 50 seater bus"],
+      ] },
+      { t: "h2", text: "Route and drive time" },
+      { t: "p", text: `The usual route is via ${r.via}. Expect about ${r.hours} without long stops. ${r.tip}` },
+      { t: "h2", text: `Best time to visit ${r.to}` },
+      { t: "p", text: r.bestTime },
+      { t: "h2", text: "What to see and do" },
+      { t: "ul", items: r.highlights },
+      { t: "h2", text: "A simple plan" },
+      { t: "ul", items: o.plan },
+      { t: "h2", text: "Tips before you book" },
+      { t: "ul", items: o.tips },
+    ],
+  };
+};
+
 export const posts: Post[] = [
   {
     slug: "bangalore-to-coorg-taxi-fare",
@@ -397,6 +480,60 @@ export const posts: Post[] = [
       ] },
     ],
   },
+  highwayPost({
+    slug: "bangalore-to-chennai-taxi-fare",
+    routeSlug: "bangalore-to-chennai-cab",
+    title: "Bangalore to Chennai Taxi Fare: One Way and Round Trip Guide",
+    description:
+      "What a taxi from Bangalore to Chennai costs, how long the drive takes, one-way drop versus round trip, and which vehicle to choose, with sample fares for an Innova Crysta, Tempo Traveller and bus.",
+    days: 2,
+    readMins: 5,
+    lead: "Bangalore to Chennai is a long highway drive used by business travellers, families and airport passengers. It is about 345 km, so planning the vehicle, the buffer for flights and the type of trip saves money and stress. This guide explains the fare and how to book.",
+    oneWay: "Most Chennai trips are one-way: an airport or station drop, a business visit or a move. If you are not coming back by road with the same vehicle, a one-way drop is simpler. If you are returning to Bangalore within a day or two, a round trip with the same vehicle usually works out better. Tell us your plan and we quote both.",
+    plan: [
+      "Early start: leave Bangalore by 5 to 6 AM to reach Chennai before the city traffic builds up.",
+      "Flights: for a flight, allow at least 2 hours of buffer. Toll and traffic near Chennai can add time.",
+      "Stop at Vellore or Krishnagiri for a break. The road is fast but long.",
+      "If staying over, add Mahabalipuram or Marina Beach on the second day.",
+    ],
+    tips: [
+      "Book the day before for an early airport drop, and confirm the pickup time with us.",
+      "Avoid the peak of the northeast monsoon in November for sightseeing.",
+      "Share your drop address so the driver can plan the final stretch.",
+      "Tolls are charged on actuals, so keep some cash or FASTag balance ready.",
+    ],
+    extraFaq: {
+      q: "Can I book a one-way taxi from Bangalore to Chennai?",
+      a: "Yes. One-way drops to Chennai are our most common request on this route. Share your date, pickup point and drop location, and we confirm the fare before you book.",
+    },
+  }),
+  highwayPost({
+    slug: "bangalore-to-coimbatore-taxi-fare",
+    routeSlug: "bangalore-to-coimbatore-cab",
+    title: "Bangalore to Coimbatore Taxi Fare: Price, Distance and Isha Trip Plan",
+    description:
+      "What a taxi from Bangalore to Coimbatore costs for a round trip, how long the drive takes, one-way drop options and a plan that includes Isha Yoga Centre, with sample fares by vehicle.",
+    days: 2,
+    readMins: 5,
+    lead: "Coimbatore is a regular route for business travellers, families and visitors to the Isha Yoga Centre. It is about 365 km from Bangalore, so a one-way drop or a two-day trip works best. This guide covers the fare, the route and how to plan the days.",
+    oneWay: "A one-way drop suits airport, railway and business trips. For a visit to Isha Yoga Centre or Coimbatore sightseeing, a two-day round trip with the same vehicle is usually more convenient, since the driver stays with you and you avoid arranging a return. We quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break near Salem or Erode, and reach Coimbatore by afternoon.",
+      "Evening: Isha Yoga Centre and the Adiyogi statue, or the Marudhamalai Temple.",
+      "Day 2: Siruvani Waterfalls or a local visit, then start the return after breakfast.",
+      "For a flight or train, leave with a 2-hour buffer, since toll queues near Salem can add time.",
+    ],
+    tips: [
+      "Check visiting hours and any booking rules for Isha Yoga Centre before you go.",
+      "Book ahead for weekends and festival periods.",
+      "Share the number of people and luggage so we pick the right vehicle.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Can I visit Isha Yoga Centre on a Bangalore to Coimbatore trip?",
+      a: "Yes. Many passengers combine the drive with a visit to Isha Yoga Centre and the Adiyogi statue. Check the centre's visiting hours first, and tell us your plan so the driver can time the day.",
+    },
+  }),
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
