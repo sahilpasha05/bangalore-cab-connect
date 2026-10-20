@@ -21,6 +21,7 @@ export type Post = {
 
 const coorg = getRoute("bangalore-to-coorg-cab")!;
 const mysore = getRoute("bangalore-to-mysore-cab")!;
+const ooty = getRoute("bangalore-to-ooty-cab")!;
 const v = (n: string) => vehicles.find((x) => x.name === n)!;
 const fare = (n: string, days: number) => {
   const x = v(n);
@@ -29,6 +30,10 @@ const fare = (n: string, days: number) => {
 const mfare = (n: string, days: number) => {
   const x = v(n);
   return mysore.km * 2 * rate(x.acRate) + x.bata * days;
+};
+const ofare = (n: string, days: number) => {
+  const x = v(n);
+  return ooty.km * 2 * rate(x.acRate) + x.bata * days;
 };
 const pick = ["Innova Crysta", "Tempo Traveller", "Force Urbania", "22 Seater"];
 
@@ -310,6 +315,86 @@ export const posts: Post[] = [
       ] },
       { t: "h2", text: "Airport drop and pickup in one booking" },
       { t: "p", text: "If you are travelling out and back, you can book both legs together. Tell us your drop time and your return flight, and the driver will be there on both days. For trips that go beyond the city, such as an airport arrival followed by a drive to Mysore or Coorg, we quote the whole journey as one trip." },
+    ],
+  },
+  {
+    slug: "bangalore-to-ooty-taxi-fare",
+    title: "Bangalore to Ooty Taxi Fare: Price, Distance and Trip Plan",
+    description:
+      "What a taxi from Bangalore to Ooty costs for a 2 or 3 day round trip in an Innova Crysta, Tempo Traveller or bus, plus distance, drive time, the Bandipur forest stretch, best season and a sample itinerary.",
+    date: "2026-10-20",
+    readMins: 6,
+    route: "bangalore-to-ooty-cab",
+    faqs: [
+      {
+        q: "What is the taxi fare from Bangalore to Ooty?",
+        a: `For a 3-day round trip of about ${ooty.km * 2} km, an Innova Crysta works out to roughly ${inr(ofare("Innova Crysta", 3))} and a Tempo Traveller to roughly ${inr(ofare("Tempo Traveller", 3))} at our listed AC rates, before tolls, parking and entry fees. We confirm the exact fare when you book.`,
+      },
+      {
+        q: "How far is Ooty from Bangalore?",
+        a: `Ooty is about ${ooty.km} km from Bangalore and takes ${ooty.hours} by road, via ${ooty.via}.`,
+      },
+      {
+        q: "Can Ooty be done in two days from Bangalore?",
+        a: "Yes, but it is a long drive each way. Two days gives you one afternoon and one morning in Ooty. Three days is more relaxed, and lets you add Coonoor or Pykara.",
+      },
+      {
+        q: "Is it safe to drive through Bandipur at night?",
+        a: "Night traffic is restricted on the Bandipur forest stretch, so plan to cross it in daylight. Leave Bangalore early so you reach that stretch well before evening.",
+      },
+      {
+        q: "Which vehicle is best for an Ooty trip?",
+        a: "An Innova Crysta suits up to 6 people. A Tempo Traveller or Force Urbania suits 8 to 12. The hill roads have many bends, so a rested and experienced driver matters more than the vehicle size.",
+      },
+    ],
+    body: [
+      { t: "p", text: `Ooty is one of the most popular hill trips from Bangalore. It is about ${ooty.km} km away, roughly ${ooty.hours} by road, through Mysore, Gundlupet and the Bandipur forest. This guide covers what the taxi costs, which vehicle to choose and how to plan the days.` },
+      { t: "h2", text: "Bangalore to Ooty taxi fare (3-day round trip)" },
+      { t: "p", text: `The estimates below use our listed AC per-km rate on the full ${ooty.km * 2} km round trip, plus three days of driver bata. Tolls, parking and entry fees are extra.` },
+      {
+        t: "table",
+        head: ["Vehicle", "Seats", "AC rate / km", "Driver bata / day", "3-day estimate"],
+        rows: pick.map((n) => [n, String(v(n).seats), v(n).acRate, inr(v(n).bata), inr(ofare(n, 3))]),
+      },
+      { t: "p", text: "For a 2-day trip, the km cost stays the same and you save one day of driver bata." },
+      {
+        t: "table",
+        head: ["Vehicle", "2-day estimate", "3-day estimate"],
+        rows: pick.map((n) => [n, inr(ofare(n, 2)), inr(ofare(n, 3))]),
+      },
+      { t: "note", text: "These are indicative estimates from published per-km rates. The final fare is confirmed when you book and depends on your dates, pickup point and the places you visit in and around Ooty." },
+      { t: "h2", text: "What changes the fare" },
+      { t: "ul", items: [
+        "Vehicle type: a 12-seater costs more per km than a 7-seater, but is usually cheaper per person for a group.",
+        "Number of days: each day adds driver bata, and a longer stay usually means more local km.",
+        "Local sightseeing: Ooty Lake, Doddabetta, Pykara and Coonoor all add km on the hill roads.",
+        "AC or non-AC: non-AC has a lower per-km rate in the cooler months.",
+        "Tolls, parking and entry fees: charged on actuals and not part of the per-km rate.",
+      ] },
+      { t: "h2", text: "Which vehicle should you choose?" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["Up to 6 people", "Innova Crysta"],
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+        ["25 or more", "25 to 50 seater bus"],
+      ] },
+      { t: "h2", text: "Route and drive time" },
+      { t: "p", text: `The usual route is via ${ooty.via}. Expect about ${ooty.hours} without long stops, and more on weekends and holidays. ${ooty.tip}` },
+      { t: "h2", text: "Best time to visit Ooty" },
+      { t: "p", text: ooty.bestTime },
+      { t: "h2", text: "A simple 3-day plan" },
+      { t: "ul", items: [
+        "Day 1: Leave Bangalore by 5 to 6 AM, breakfast near Mysore, cross Bandipur in daylight and reach Ooty by afternoon. Evening at Ooty Lake or the market.",
+        "Day 2: Doddabetta Peak early, then the Botanical Gardens. Add Pykara Falls or Coonoor if you have time.",
+        "Day 3: Start the return after breakfast, so you cross the Bandipur stretch in daylight and reach Bangalore in the evening.",
+      ] },
+      { t: "h2", text: "Tips before you book" },
+      { t: "ul", items: [
+        "Book at least a week ahead for weekends, long weekends and the summer season.",
+        "Ask for a driver who knows the hill roads, and keep to the daytime driving on the Bandipur stretch.",
+        "Carry a light jacket. Mornings in Ooty are cool all year.",
+        "Entry fees at gardens and viewpoints are paid on the spot and are not included in the fare.",
+      ] },
     ],
   },
 ];
