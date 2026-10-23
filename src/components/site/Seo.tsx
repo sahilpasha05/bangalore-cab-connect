@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { openBooking, type BookingPrefill } from "@/lib/booking-dialog";
 import { callLink } from "@/lib/whatsapp";
 import type { Crumb, Faq } from "@/lib/seo";
+import { posts } from "@/data/posts";
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
@@ -166,5 +167,22 @@ export function HubLinks() {
         </RouterLink>
       ))}
     </div>
+  );
+}
+
+const guideOrder = ["bangalore-to-mysore-day-trip-taxi"];
+
+export function GuideLinks() {
+  const list = [...posts].sort((a, b) => Number(guideOrder.includes(b.slug)) - Number(guideOrder.includes(a.slug)));
+  return (
+    <ul className="grid gap-2 sm:grid-cols-2">
+      {list.map((p) => (
+        <li key={p.slug}>
+          <Link to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-smooth hover:border-foreground/40">
+            {p.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

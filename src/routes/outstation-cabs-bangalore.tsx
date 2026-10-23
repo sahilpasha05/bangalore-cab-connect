@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, FaqList, RatesTable, GroupGuide } from "@/components/site/Seo";
+import { PageHero, Section, FaqList, RatesTable, GroupGuide, GuideLinks } from "@/components/site/Seo";
 import { routes } from "@/data/routes";
 import { vehicles, inr } from "@/data/vehicles";
 import { breadcrumbLd, faqLd, serviceLd, seoHead, type Faq } from "@/lib/seo";
@@ -69,6 +69,8 @@ function Page() {
 
       <Section title="Outstation rates by vehicle"><RatesTable /></Section>
       <Section title="Which vehicle for your group?"><GroupGuide /></Section>
+      <Section title="Travel guides and fares"><GuideLinks /></Section>
+
       <Section title="Outstation cab questions"><FaqList faqs={faqs} /></Section>
     </>
   );

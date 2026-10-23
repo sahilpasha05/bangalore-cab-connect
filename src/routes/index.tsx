@@ -7,7 +7,7 @@ import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
 import { routes } from "@/data/routes";
 import { SITE, BUSINESS, faqLd } from "@/lib/seo";
-import { GroupGuide, HubLinks } from "@/components/site/Seo";
+import { GroupGuide, HubLinks, GuideLinks } from "@/components/site/Seo";
 import { vehicles, rate, inr } from "@/data/vehicles";
 import { openBooking } from "@/lib/booking-dialog";
 import { waLink, messages } from "@/lib/whatsapp";
@@ -452,6 +452,8 @@ function AreasAndGuides() {
         <Link to="/blog/$slug" params={{ slug: "bangalore-to-coorg-taxi-fare" }} className="font-semibold underline">Bangalore to Coorg taxi fare guide</Link> for a worked fare example and a two-day plan, or browse every route and vehicle below.
       </p>
       <div className="mt-4"><HubLinks /></div>
+      <h3 className="mt-8 text-lg font-bold">Travel guides and fares</h3>
+      <div className="mt-3"><GuideLinks /></div>
     </section>
   );
 }
