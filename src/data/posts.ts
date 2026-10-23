@@ -534,6 +534,33 @@ export const posts: Post[] = [
       a: "Yes. Many passengers combine the drive with a visit to Isha Yoga Centre and the Adiyogi statue. Check the centre's visiting hours first, and tell us your plan so the driver can time the day.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-tirupati-taxi-fare",
+    routeSlug: "bangalore-to-tirupati-cab",
+    title: "Bangalore to Tirupati Taxi Fare: Price, Distance and Darshan Trip Plan",
+    description:
+      "What a taxi from Bangalore to Tirupati costs for a round trip, how long the drive takes, how to plan the pickup around your darshan slot, and which vehicle suits your group, with sample fares.",
+    days: 2,
+    readMins: 5,
+    lead: "Tirupati is one of the most common pilgrimage trips from Bangalore. It is about 250 km, roughly 5 to 5.5 hours each way, so most families go for a night and a day. This guide explains the fare, the timing around your darshan slot and how to choose a vehicle.",
+    oneWay: "Most pilgrims book a round trip so the same driver waits and brings them back. If you are travelling only one way, for example a drop to Tirupati and a return by train, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Night or early start: many travellers leave Bangalore at night or very early so they reach Tirupati before the darshan slot.",
+      "Tirumala: the drive up the ghat road takes extra time, so keep a buffer before your slot.",
+      "After darshan: Sri Padmavathi Temple at Tiruchanur or Kapila Theertham fit well on the way back.",
+      "Return: start after a meal and rest, since the drive back is long after a day of queues.",
+    ],
+    tips: [
+      "Book your darshan slot in advance and share the time, so we can plan the pickup around it.",
+      "Weekends and festival days are very crowded, so book the cab early.",
+      "Tell us the number of people and elderly passengers so we choose the right vehicle.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Can the driver wait while we do darshan?",
+      a: "Yes. On a round trip the driver stays with the vehicle for the duration of your visit and brings you back. Share your darshan slot and expected finish time so we can plan the return.",
+    },
+  }),
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
