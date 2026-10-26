@@ -561,6 +561,70 @@ export const posts: Post[] = [
       a: "Yes. On a round trip the driver stays with the vehicle for the duration of your visit and brings you back. Share your darshan slot and expected finish time so we can plan the return.",
     },
   }),
+  {
+    slug: "one-way-drop-taxi-bangalore-to-erode-cuddalore-salem",
+    title: "One Way Drop Taxi from Bangalore to Erode, Cuddalore and Salem",
+    description:
+      "How one-way drop taxis from Bangalore to Erode, Cuddalore and Salem work: distances, drive times, how the fare is quoted, which vehicle to pick and how to book a drop with a driver.",
+    date: "2026-10-26",
+    readMins: 4,
+    route: "bangalore-to-coimbatore-cab",
+    faqs: [
+      {
+        q: "How much is a one way drop taxi from Bangalore to Erode?",
+        a: "The fare depends on the vehicle, the date and your pickup point. Share your pickup area and drop location on WhatsApp or call, and we confirm the one-way fare before you book. Tolls and parking are charged on actuals.",
+      },
+      {
+        q: "How far are Erode, Cuddalore and Salem from Bangalore?",
+        a: "Salem is roughly 200 km, Erode roughly 270 km and Cuddalore roughly 290 km from Bangalore by road. Drive times are about 4 to 5 hours for Salem and 5 to 7 hours for Erode and Cuddalore, depending on traffic near Hosur.",
+      },
+      {
+        q: "Can I book a drop taxi for a family or a group?",
+        a: "Yes. An Innova Crysta suits up to 6 people, a Tempo Traveller or Force Urbania suits 8 to 12, and larger groups can book a 22 seater or bigger bus.",
+      },
+      {
+        q: "Do you take other towns in Tamil Nadu?",
+        a: "Yes. We take one-way drops to most towns on the Hosur, Krishnagiri, Salem and Tiruvannamalai highways. Ask us for your destination and we confirm the fare.",
+      },
+    ],
+    body: [
+      { t: "p", text: "Many people leave Bangalore for a one-way trip to a Tamil Nadu town: a family function, a home visit, a job move or a pickup from the railway station. A drop taxi suits these trips, because you do not pay for the vehicle to wait or for a full round trip. This guide covers the three most requested drops: Salem, Erode and Cuddalore." },
+      { t: "h2", text: "Distance and drive time from Bangalore" },
+      {
+        t: "table",
+        head: ["Destination", "Approx distance", "Drive time", "Usual route"],
+        rows: [
+          ["Salem", "200 km", "4 to 5 hours", "Hosur, Krishnagiri, Dharmapuri"],
+          ["Erode", "270 km", "5 to 6 hours", "Hosur, Krishnagiri, Salem"],
+          ["Cuddalore", "290 km", "6 to 7 hours", "Hosur, Krishnagiri, Tiruvannamalai, Villupuram"],
+        ],
+      },
+      { t: "note", text: "Distances and times are approximate and change with the route, traffic and stops. We confirm the actual route when you book." },
+      { t: "h2", text: "How the one-way fare is worked out" },
+      { t: "p", text: "A one-way drop is quoted for your vehicle, date and pickup point, not as a fixed price for the town. Because the driver has to return, a drop is quoted differently from a round trip. Send us your pickup area, the drop address and your travel date, and we confirm the fare before you book." },
+      { t: "ul", items: [
+        "Vehicle type: an Innova Crysta, Tempo Traveller or bus is priced differently.",
+        "Pickup point: Whitefield, Electronic City and Hebbal start from different distances.",
+        "Time of travel: night and festival-day trips can cost more.",
+        "Tolls and parking: charged on actuals and not part of the base fare.",
+      ] },
+      { t: "h2", text: "Which vehicle to choose" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["Up to 6 people", "Innova Crysta"],
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+        ["25 or more", "25 to 50 seater bus"],
+      ] },
+      { t: "h2", text: "Tips for a one-way trip" },
+      { t: "ul", items: [
+        "Leave Bangalore before 6 AM or after 9 PM to avoid the heaviest traffic towards Hosur.",
+        "Share the full drop address and a local contact number so the driver can find it.",
+        "Book a day ahead for weekends and festival days.",
+        "Tell us about the luggage, so we choose a vehicle with enough space.",
+      ] },
+      { t: "p", text: "For other destinations, see our drop taxi page, or message us your route on WhatsApp for a quick quote." },
+    ],
+  },
 ];
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
