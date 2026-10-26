@@ -37,6 +37,7 @@ const copy: Record<string, Pick<VehicleInfo, "headline" | "group" | "idealFor" |
   },
   "22 Seater": {
     headline: "22 Seater Bus on Rent in Bangalore",
+    seoTitle: "22 Seater Bus on Rent in Bangalore | Rate per km and Price",
     group: "15 to 22 passengers",
     idealFor: ["Wedding guest transport", "Corporate and college outings", "Temple and pilgrimage groups", "Airport group transfers"],
     about:
@@ -44,6 +45,7 @@ const copy: Record<string, Pick<VehicleInfo, "headline" | "group" | "idealFor" |
   },
   "25 Seater": {
     headline: "25 Seater Bus on Rent in Bangalore",
+    seoTitle: "25 Seater Bus on Rent in Bangalore | Rate per km and Price",
     group: "18 to 25 passengers",
     idealFor: ["Wedding and family functions", "Office and school trips", "Tours across Karnataka", "Event shuttles"],
     about:

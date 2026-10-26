@@ -562,6 +562,68 @@ export const posts: Post[] = [
     },
   }),
   {
+    slug: "22-seater-25-seater-bus-rent-bangalore-price",
+    title: "22 Seater and 25 Seater Bus on Rent in Bangalore: Rate per km and Sample Fares",
+    description:
+      "22 seater and 25 seater bus rental in Bangalore: per-km rate, driver bata, sample outstation fares, and when a mini bus is better than a Tempo Traveller.",
+    date: "2026-10-26",
+    readMins: 5,
+    route: "bangalore-to-coorg-cab",
+    faqs: [
+      {
+        q: "What is the 22 seater bus rate per km in Bangalore?",
+        a: `Our listed AC rate for a 22 seater is ${v("22 Seater").acRate} per km, plus driver bata of ${inr(v("22 Seater").bata)} per day. The 25 seater is ${v("25 Seater").acRate} per km with bata of ${inr(v("25 Seater").bata)} per day.`,
+      },
+      {
+        q: "Is a 22 seater the same as a Tempo Traveller?",
+        a: "No. A Tempo Traveller seats about 12 passengers. A 22 seater is a mini bus for groups of 15 to 22, so it suits larger families, wedding guests and office outings.",
+      },
+      {
+        q: "Which is better for 15 people, a 22 seater or two Tempo Travellers?",
+        a: "A single 22 seater is usually simpler and cheaper, since you pay one driver and keep everyone in one vehicle. Share your group size and route and we quote both.",
+      },
+      {
+        q: "How is the outstation fare calculated?",
+        a: "Outstation trips are charged on the round-trip distance at the per-km rate, plus driver bata for each day. Tolls, parking and state entry fees are extra on actuals.",
+      },
+    ],
+    body: [
+      { t: "p", text: "A 22 seater or 25 seater is the right size for groups that are too big for a Tempo Traveller but do not need a full coach. This guide gives the listed rates, sample fares for popular trips and when to choose each." },
+      { t: "h2", text: "22 seater and 25 seater rental rates" },
+      {
+        t: "table",
+        head: ["Vehicle", "Seats", "AC rate / km", "Driver bata / day"],
+        rows: ["22 Seater", "25 Seater"].map((n) => [n, String(v(n).seats), v(n).acRate, inr(v(n).bata)]),
+      },
+      { t: "h2", text: "Sample outstation fares (2-day round trip)" },
+      { t: "p", text: "Estimates use the full round-trip distance at our AC per-km rate plus two days of driver bata. Tolls and parking are extra." },
+      {
+        t: "table",
+        head: ["Trip", "One-way km", "22 seater", "25 seater"],
+        rows: ["bangalore-to-mysore-cab", "bangalore-to-coorg-cab", "bangalore-to-ooty-cab", "bangalore-to-tirupati-cab"].map((slug) => {
+          const r = getRoute(slug)!;
+          return ["Bangalore to " + r.to, String(r.km), inr(routeFare(slug, "22 Seater", 2)), inr(routeFare(slug, "25 Seater", 2))];
+        }),
+      },
+      { t: "note", text: "These are indicative estimates from published per-km rates. The final fare is confirmed when you book." },
+      { t: "h2", text: "Which size should you choose?" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["Up to 6 people", "Innova Crysta"],
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+        ["18 to 25 people", "25 seater bus"],
+      ] },
+      { t: "h2", text: "What changes the price" },
+      { t: "ul", items: [
+        "Total km: the round-trip distance plus any local sightseeing.",
+        "Number of days: each day adds driver bata.",
+        "Season: weekends and festival days fill up early, so book ahead.",
+        "Tolls, parking and state entry fees: charged on actuals.",
+      ] },
+      { t: "p", text: "Share your date, group size and route on WhatsApp and we confirm the fare and availability." },
+    ],
+  },
+  {
     slug: "one-way-drop-taxi-bangalore-to-erode-cuddalore-salem",
     title: "One Way Drop Taxi from Bangalore to Erode, Cuddalore and Salem",
     description:
