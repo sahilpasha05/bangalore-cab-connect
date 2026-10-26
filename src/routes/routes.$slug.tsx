@@ -54,6 +54,7 @@ function buildFaqs(r: ReturnType<typeof getRoute> & {}): Faq[] {
   }
   const roundKm = r.km * 2;
   return [
+    ...(r.moreFaqs ?? []),
     { q: `How far is ${r.to} from Bangalore by road?`, a: `${r.to} is about ${r.km} km from Bangalore and takes ${r.hours}, going ${r.via}. Actual time depends on traffic and halts.` },
     { q: `How much does a cab from Bangalore to ${r.to} cost?`, a: `Fares depend on the vehicle and days. An Innova Crysta is ${innova.acRate} per km (AC) with ${inr(innova.bata)} driver bata per day, so a ${roundKm} km round trip is roughly ${inr(roundKm * rate(innova.acRate) + innova.bata)}. We confirm the exact fare before you book.` },
     { q: `Which vehicle is best for a trip to ${r.to}?`, a: `Up to 6 people fit comfortably in an Innova Crysta. For 8 to 12 people choose a Tempo Traveller (${tt.acRate} per km AC) or Force Urbania. For 15 or more, a 22 to 50 seater bus is cheaper per person.` },
@@ -109,6 +110,12 @@ function RoutePage() {
           <p><b>Tip:</b> {r.tip}</p>
         </div>
       </Section>
+
+      {r.guide?.map((g) => (
+        <Section key={g.h} title={g.h}>
+          <p className="max-w-3xl leading-relaxed text-muted-foreground">{g.p}</p>
+        </Section>
+      ))}
 
       {isAirport ? (
         <Section title="Distance from popular areas">
