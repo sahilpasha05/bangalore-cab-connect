@@ -35,6 +35,7 @@ type V = NonNullable<ReturnType<typeof getVehicle>>;
 
 function buildFaqs(v: V): Faq[] {
   return [
+    ...(v.moreFaqs ?? []),
     { q: `What is the ${v.name} rental price per km in Bangalore?`, a: `The ${v.name} is ${v.acRate} per km with AC and ${v.nonAcRate} per km without AC, plus driver bata of ${inr(v.bata)} per day on outstation trips. We confirm the exact fare before you book.` },
     { q: `How many people can sit in a ${v.name}?`, a: `The ${v.name} has ${v.seats} seats. It is best suited for ${v.group}, leaving room for luggage.` },
     { q: "What does driver bata mean?", a: "Driver bata is the daily allowance paid to the driver on outstation trips, charged in addition to the per-km rate." },
@@ -127,6 +128,39 @@ function VehiclePage() {
           Estimate = round-trip distance × AC per-km rate + one day's driver bata. Tolls, parking and permits are extra. We confirm the final fare before you book.
         </p>
       </Section>
+
+      {v.seats >= 22 && (
+        <Section title={`${v.name} cost per person (if the bus is full)`}>
+          <TableBox>
+            <table className="w-full min-w-[520px] text-left text-sm tabular-nums">
+              <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
+                <tr><th className="px-4 py-3">Day trip</th><th className="px-4 py-3">Round-trip estimate (AC)</th><th className="px-4 py-3">Per person ({v.seats} seats)</th></tr>
+              </thead>
+              <tbody>
+                {popular.slice(0, 4).map((r) => {
+                  const total = r.km * 2 * rate(v.acRate) + v.bata;
+                  return (
+                    <tr key={r.slug} className="border-t border-border/60">
+                      <td className="px-4 py-3 font-medium">Bangalore to {r.to}</td>
+                      <td className="px-4 py-3">{inr(total)}</td>
+                      <td className="px-4 py-3 font-semibold">{inr(total / v.seats)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </TableBox>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Per-person cost = round-trip estimate divided by {v.seats} seats. If fewer people travel, the share per person is higher. Tolls and parking are extra.
+          </p>
+        </Section>
+      )}
+
+      {v.guide?.map((g) => (
+        <Section key={g.h} title={g.h}>
+          <p className="max-w-3xl leading-relaxed text-muted-foreground">{g.p}</p>
+        </Section>
+      ))}
 
       <Section title="Frequently asked questions">
         <FaqList faqs={buildFaqs(v)} />
