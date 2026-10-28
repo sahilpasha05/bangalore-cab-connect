@@ -561,6 +561,32 @@ export const posts: Post[] = [
       a: "Yes. On a round trip the driver stays with the vehicle for the duration of your visit and brings you back. Share your darshan slot and expected finish time so we can plan the return.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-pondicherry-taxi-fare",
+    routeSlug: "bangalore-to-pondicherry-cab",
+    title: "Bangalore to Pondicherry Taxi Fare: Price, Distance and Weekend Trip Plan",
+    description:
+      "What a taxi from Bangalore to Pondicherry costs for a round trip, how long the drive takes, how to plan a long weekend, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Pondicherry is a favourite long weekend trip from Bangalore for the beaches, cafes and the French Quarter. It is about 310 km, roughly 6.5 to 7 hours each way, so most groups plan a Friday night or Saturday start and return on Sunday or Monday. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the same driver stays for the weekend and brings them back. If you only need a drop in Pondicherry, for example because you are returning by bus or train, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early to beat the Hosur traffic and reach Pondicherry by afternoon. Check in and spend the evening at the Promenade Beach.",
+      "Day 2: walk through White Town in the morning, visit Auroville and spend the rest of the day at the beach or in the cafes.",
+      "Day 3: have a relaxed morning, then start back after lunch so you are not driving in the dark through the busiest stretch.",
+    ],
+    tips: [
+      "Start early on Friday or Saturday. The Hosur stretch is the slowest part of the drive.",
+      "Book the cab for the full weekend so the driver is with you for local travel too. Share your hotel location and we plan the days.",
+      "Tell us the number of people and luggage so we choose the right vehicle.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Can we use the same cab for sightseeing in Pondicherry?",
+      a: "Yes. On a round trip the vehicle and driver stay with you for the days you book, so you can use it for Auroville, the beaches and White Town. Share your plan and we confirm the days and fare.",
+    },
+  }),
   {
     slug: "22-seater-25-seater-bus-rent-bangalore-price",
     title: "22 Seater and 25 Seater Bus on Rent in Bangalore: Rate per km and Sample Fares",
