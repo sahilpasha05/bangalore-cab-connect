@@ -97,7 +97,7 @@ function Page() {
         <div className="space-y-3 text-sm leading-relaxed text-muted-foreground max-w-3xl">
           <p>Count everyone travelling, then add a few seats of buffer so there is room for bags and a comfortable ride. A 22 seater suits groups of 15 to 22, and a 25 seater suits 18 to 25. Larger groups can look at 33, 40, 45 or 50 seaters.</p>
           <p>For 8 to 12 people a Tempo Traveller or Force Urbania is usually the better fit, since a bus would run mostly empty. If your group is 13 to 14, a 22 seater is normally simpler than two vehicles.</p>
-          <p>For a detailed fare comparison, read our <Link to="/blog/$slug" params={{ slug: "22-seater-25-seater-bus-rent-bangalore-price" }} className="font-medium underline">22 and 25 seater bus price guide</Link>.</p>
+          <p>For a detailed fare comparison, read our <Link to="/blog/$slug" params={{ slug: "22-seater-25-seater-bus-rent-bangalore-price" }} className="font-medium underline">22 and 25 seater bus price guide</Link>. To see what a bus costs for a full day at 100, 150 or 250 km, read <Link to="/blog/$slug" params={{ slug: "bus-on-rent-in-bangalore-per-day-rate" }} className="font-medium underline">bus on rent in Bangalore per day</Link>.</p>
         </div>
       </Section>
 

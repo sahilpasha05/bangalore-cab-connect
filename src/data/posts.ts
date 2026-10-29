@@ -588,6 +588,96 @@ export const posts: Post[] = [
     },
   }),
   {
+    slug: "bus-on-rent-in-bangalore-per-day-rate",
+    title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
+    description:
+      "How much a bus costs per day in Bangalore: per-km rates for 22 to 50 seater buses, sample one-day costs for 100, 150 and 250 km, cost per person, and what to share to get a quote.",
+    date: "2026-10-29",
+    readMins: 5,
+    route: "bangalore-to-mysore-cab",
+    faqs: [
+      {
+        q: "How much does a bus on rent cost per day in Bangalore?",
+        a: `Our buses are charged per km plus driver bata. A 22 seater is ${v("22 Seater").acRate} per km with ${inr(v("22 Seater").bata)} bata, and a 50 seater is ${v("50 Seater").acRate} per km with ${inr(v("50 Seater").bata)} bata (AC rates). A 150 km day in a 22 seater works out to about ${inr(150 * rate(v("22 Seater").acRate) + v("22 Seater").bata)}, before tolls and parking.`,
+      },
+      {
+        q: "Is the bus charged by the hour or by the km?",
+        a: "Our listed rates are per km plus driver bata. If you want a local city day or a fixed-hours plan, share your timings and route and we confirm how it is quoted, including any minimum km, before you book.",
+      },
+      {
+        q: "Which bus is cheapest per person?",
+        a: "A fuller bus is cheaper per person. Pick the smallest bus that seats your group with a few spare seats for bags. A 22 or 25 seater suits 15 to 25 people, and 40 to 50 seaters suit large groups.",
+      },
+      {
+        q: "Are tolls, parking and driver food included?",
+        a: "No. Tolls, parking and state entry fees are charged on actuals, in addition to the per-km rate and driver bata.",
+      },
+      {
+        q: "How early should I book a bus?",
+        a: "Book as early as you can, especially for weekends, wedding season and festival dates. Share your date, pickup point, destination and group size on WhatsApp and we confirm availability and the fare.",
+      },
+    ],
+    body: [
+      { t: "p", text: "Renting a bus for a day is the simplest way to move a large group together: one vehicle, one driver and one point of contact. This guide shows how the price is worked out, what a day trip costs for different bus sizes and how to get an exact quote." },
+      { t: "h2", text: "How bus rental is priced" },
+      { t: "ul", items: [
+        "Per-km rate: charged on the km the bus runs, and AC and non-AC have different rates.",
+        "Driver bata: a daily allowance for the driver, added for each day.",
+        "Tolls, parking and state entry fees: charged on actuals, not part of the rate.",
+      ] },
+      { t: "h2", text: "Bus rental rates (22 to 50 seater)" },
+      {
+        t: "table",
+        head: ["Bus", "Seats", "AC rate / km", "Non-AC rate / km", "Driver bata / day"],
+        rows: vehicles.filter((x) => x.seats >= 22).map((x) => [x.name, String(x.seats), x.acRate, x.nonAcRate, inr(x.bata)]),
+      },
+      { t: "h2", text: "One-day cost for 100, 150 and 250 km (AC)" },
+      { t: "p", text: "Cost = km x AC per-km rate + one day of driver bata. Use it to estimate a local day, a wedding run or a short day trip. Tolls and parking are extra." },
+      {
+        t: "table",
+        head: ["Bus", "100 km", "150 km", "250 km"],
+        rows: vehicles.filter((x) => x.seats >= 22).map((x) => [x.name, ...[100, 150, 250].map((km) => inr(km * rate(x.acRate) + x.bata))]),
+      },
+      { t: "note", text: "These are estimates from published per-km rates. We confirm the final fare, and any minimum km or hours, when you book." },
+      { t: "h2", text: "Cost per person for a 250 km day" },
+      {
+        t: "table",
+        head: ["Bus", "250 km total", "If the bus is full"],
+        rows: vehicles.filter((x) => x.seats >= 22).map((x) => {
+          const total = 250 * rate(x.acRate) + x.bata;
+          return [x.name, inr(total), inr(total / x.seats) + " per person"];
+        }),
+      },
+      { t: "p", text: "The per-person figure assumes every seat is used. With fewer passengers the share per person is higher, which is why it pays to pick the right size." },
+      { t: "h2", text: "Which bus for which group" },
+      { t: "table", head: ["Group size", "Best vehicle"], rows: [
+        ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+        ["15 to 22 people", "22 seater bus"],
+        ["18 to 25 people", "25 seater bus"],
+        ["26 to 33 people", "33 seater bus"],
+        ["32 to 40 people", "40 seater bus"],
+        ["38 to 45 people", "45 seater bus"],
+        ["42 to 50 people", "50 seater bus"],
+      ] },
+      { t: "h2", text: "What groups book a bus for" },
+      { t: "ul", items: [
+        "Wedding guest transfers between venue, hotel and station.",
+        "Office outings and team offsites.",
+        "School and college tours.",
+        "Temple and pilgrimage trips.",
+        "Airport and railway group transfers.",
+      ] },
+      { t: "h2", text: "What to share to get a quote" },
+      { t: "ul", items: [
+        "Date and pickup time.",
+        "Pickup point and destination, or the places you want to visit.",
+        "Number of passengers and rough luggage.",
+        "AC or non-AC, and whether you need a return the same day.",
+      ] },
+      { t: "p", text: "Send these on WhatsApp or call and we confirm the vehicle, fare and availability before you book." },
+    ],
+  },
+  {
     slug: "22-seater-25-seater-bus-rent-bangalore-price",
     title: "22 Seater and 25 Seater Bus on Rent in Bangalore: Rate per km and Sample Fares",
     description:
