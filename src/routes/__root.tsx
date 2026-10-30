@@ -53,14 +53,16 @@ export const Route = createRootRoute({
         href: "https://fonts.gstatic.com",
         crossOrigin: "anonymous",
       },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap",
-      },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    // Load web fonts without blocking first paint; text shows in the fallback font until they arrive.
+    scripts: [
+      {
+        children: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap";l.media="print";l.onload=function(){l.media="all"};document.head.appendChild(l)})();`,
       },
     ],
   }),

@@ -11,7 +11,8 @@ import { GroupGuide, HubLinks, GuideLinks } from "@/components/site/Seo";
 import { vehicles, rate, inr } from "@/data/vehicles";
 import { openBooking } from "@/lib/booking-dialog";
 import { waLink, messages } from "@/lib/whatsapp";
-import heroImg from "@/assets/hero-cab.jpg";
+import heroImg from "@/assets/hero-cab-1920.webp";
+import heroImgSm from "@/assets/hero-cab-828.webp";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -75,6 +76,9 @@ function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
+          srcSet={`${heroImgSm} 828w, ${heroImg} 1920w`}
+          sizes="100vw"
+          fetchPriority="high"
           alt="Premium cab in Bangalore"
           width={1920}
           height={1080}
