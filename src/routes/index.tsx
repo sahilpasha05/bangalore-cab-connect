@@ -76,7 +76,7 @@ function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
-          srcSet={`${heroImgSm} 828w, ${heroImg} 1920w`}
+          srcSet={`${heroImgSm} 720w, ${heroImg} 1920w`}
           sizes="100vw"
           fetchPriority="high"
           alt="Premium cab in Bangalore"

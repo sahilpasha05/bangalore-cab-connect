@@ -18,7 +18,7 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background">
       <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" aria-label="Bangalore Cab Rental home" className="flex items-center transition-smooth hover:opacity-80">
-          <img src="/logo-sm.webp" alt="Bangalore Cab Rental" width={280} height={114} className="h-12 w-auto sm:h-14" />
+          <img src="/logo-sm.webp" alt="Bangalore Cab Rental" width={210} height={85} className="h-12 w-auto sm:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
