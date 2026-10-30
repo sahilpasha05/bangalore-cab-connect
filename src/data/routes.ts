@@ -251,6 +251,16 @@ export const routes: RouteInfo[] = [
     bestTime: "October to March. Heavy monsoon rain can affect the ghat sections.",
     tip: "Leave early and plan a halt at Hassan or Sakleshpur. Avoid driving the ghat after dark in the rainy season.",
     via: "NH75 via Nelamangala, Hassan and Shiradi Ghat",
+    guide: [
+      { h: "Plan the drive to Mangalore", p: "Mangalore is about 350 km from Bangalore and takes roughly 6.5 to 7 hours without long stops. The road is a national highway most of the way, and the last stretch descends the Shiradi Ghat toward the coast. Leave early so you cross the ghat in daylight and reach the city with time to settle in." },
+      { h: "A simple 2-day plan", p: "Day 1: leave Bangalore in the early morning, break for a meal at Hassan, and reach Mangalore by evening. Spend the evening at Panambur or Tannirbhavi beach. Day 2: visit Kadri Manjunath Temple and St Aloysius Chapel, then start back after lunch. If you also want Dharmasthala or Kukke Subramanya, add a day, since each is a separate drive from Mangalore." },
+      { h: "Which vehicle suits your group", p: "An Innova Crysta suits families of up to 6. A Tempo Traveller or Force Urbania suits 8 to 12 and keeps a group together on the long drive. For temple groups and larger families, a 22 or 25 seater bus is usually cheaper per person." },
+      { h: "Things to check before you go", p: "Share your travel date and where you are staying so we plan the pickup and the return. In the monsoon, heavy rain can slow the ghat sections, so allow extra time. Tolls and parking are charged on actuals, and a longer stay adds driver bata for each extra day." },
+    ],
+    moreFaqs: [
+      { q: "How long does the drive from Bangalore to Mangalore take?", a: "About 6.5 to 7 hours without long stops, covering roughly 350 km via Hassan and the Shiradi Ghat. Allow extra time in heavy rain." },
+      { q: "Can I visit Dharmasthala and Kukke Subramanya on the same trip?", a: "Yes, but each is a separate drive from Mangalore, so most groups add a day. Share your plan and we confirm the days and fare." },
+    ],
   },
   {
     slug: "bangalore-to-coimbatore-cab",
