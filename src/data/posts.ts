@@ -587,6 +587,32 @@ export const posts: Post[] = [
       a: "Yes. On a round trip the vehicle and driver stay with you for the days you book, so you can use it for Auroville, the beaches and White Town. Share your plan and we confirm the days and fare.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-chikmagalur-taxi-fare",
+    routeSlug: "bangalore-to-chikmagalur-cab",
+    title: "Bangalore to Chikmagalur Taxi Fare: Price, Distance and Weekend Trip Plan",
+    description:
+      "What a taxi from Bangalore to Chikmagalur costs for a round trip, how long the drive takes, how to plan a 2-night weekend, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Chikmagalur is one of the easiest weekend trips from Bangalore, with coffee estates, hill viewpoints and waterfalls. It is about 245 km, roughly 5 to 5.5 hours each way, so most groups leave on Friday night or early Saturday and return on Sunday. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the same driver stays for the weekend and handles local travel between estates and viewpoints. If you only need a drop in Chikmagalur, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break for breakfast near Hassan and reach your homestay by afternoon. Spend the evening at the estate.",
+      "Day 2: an early start for Mullayanagiri or Baba Budangiri, then Hebbe Falls or Kemmanagundi if the roads and weather allow.",
+      "Day 3: a relaxed morning, then start back after lunch so you reach Bangalore before late evening.",
+    ],
+    tips: [
+      "Share your homestay name. Some estate and viewpoint roads are narrow or rough, and the driver can plan the last stretch.",
+      "Book the cab for the full weekend so the same driver covers local sightseeing. Local travel between viewpoints adds up quickly.",
+      "Check weather before you go in the monsoon months, because mist and rain can slow hill roads.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Is the road to Mullayanagiri suitable for a large bus?",
+      a: "The final approach to some viewpoints and estates is narrow, so larger vehicles may be asked to park below and the group walks or shifts to a smaller vehicle for the last stretch. Tell us your group size and destination and we suggest the right vehicle.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
