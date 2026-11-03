@@ -613,6 +613,32 @@ export const posts: Post[] = [
       a: "The final approach to some viewpoints and estates is narrow, so larger vehicles may be asked to park below and the group walks or shifts to a smaller vehicle for the last stretch. Tell us your group size and destination and we suggest the right vehicle.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-hampi-taxi-fare",
+    routeSlug: "bangalore-to-hampi-cab",
+    title: "Bangalore to Hampi Taxi Fare: Price, Distance and 3-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Hampi costs for a round trip, how long the drive takes, how to plan a 3-day visit, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Hampi is a UNESCO World Heritage site with temples and boulder landscapes spread over a wide area. It is about 340 km from Bangalore, roughly 6.5 to 7 hours each way, so most groups plan three days: arrive by afternoon, spend a full day at the monuments and return on the third day. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the vehicle and driver stay with them for the whole visit, since the sights are spread out and local transport can be limited. If you only need a drop at Hampi or Hosapete, we can quote a one-way drop. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break for breakfast near Chitradurga and reach Hampi by afternoon. Visit Virupaksha Temple in the evening.",
+      "Day 2: Matanga Hill for sunrise, then Vittala Temple and the stone chariot, and Hemakuta Hill. Carry water and a hat.",
+      "Day 3: a relaxed morning, then start the drive back after lunch and reach Bangalore by night.",
+    ],
+    tips: [
+      "Reach Hampi by afternoon and keep sunrise for the second morning, when it is cooler.",
+      "Keep the cab with you for the full stay. Sights are spread over a large area and walking between them in the heat is tiring.",
+      "Summers are very hot, so October to February is the better season.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "How many days do we need for Hampi from Bangalore?",
+      a: "Three days is comfortable: one for the drive in, one full day at the monuments and one for the drive back. A two-day trip leaves very little time at the sights.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
