@@ -19,6 +19,8 @@ const faqs: Faq[] = [
   { q: "Mini bus or Tempo Traveller: which is better?", a: "A Tempo Traveller seats about 12 and suits smaller groups. A mini bus of 22 or 25 seats suits larger groups, and is usually cheaper per person once you have more than 13 or 14 people." },
   { q: "Can the bus be booked for a one-way trip?", a: "Yes. Share your pickup and drop, and we confirm the one-way fare. One-way trips are quoted differently from round trips." },
   { q: "Are tolls and parking included in the rate?", a: "No. Tolls, parking and state entry fees are charged on actuals, in addition to the per-km rate and driver bata." },
+  { q: "What is the mini bus rental price per day in Bangalore?", a: `It depends on the distance. A one-day 100 km trip in a ${small.name} works out to about ${inr(100 * rate(small.acRate) + small.bata)} (100 km × ${small.acRate} + ${inr(small.bata)} bata), and a 150 km day to about ${inr(150 * rate(small.acRate) + small.bata)}, before tolls and parking. Larger buses cost more per km, so share your route and we confirm the exact fare.` },
+  { q: "How early should I book a mini bus?", a: "Book as early as you can for weddings, festival weekends and long weekends, when buses are in demand. For a normal weekday outing a few days is usually enough, but we confirm availability for your date when you enquire." },
   { q: "Is AC available in all buses?", a: "Rates are listed for both AC and non-AC. Tell us which you prefer when you enquire and we confirm what is available for your date." },
 ];
 
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/mini-bus-on-rent-bangalore")({
   head: () => {
     const description = `Mini bus and coach on rent in Bangalore: ${buses.map((b) => b.seats).join(", ")} seaters with driver. Per-km rates for weddings, corporate outings, college trips and pilgrimages.`;
     return seoHead({
-      title: "Mini Bus on Rent in Bangalore | 22 to 50 Seater Rates",
+      title: "Mini Bus on Rent in Bangalore | Rate per km, 22 to 50 Seater",
       description,
       path,
       ld: [
@@ -99,6 +101,48 @@ function Page() {
           <p>For 8 to 12 people a Tempo Traveller or Force Urbania is usually the better fit, since a bus would run mostly empty. If your group is 13 to 14, a 22 seater is normally simpler than two vehicles.</p>
           <p>For a detailed fare comparison, read our <Link to="/blog/$slug" params={{ slug: "22-seater-25-seater-bus-rent-bangalore-price" }} className="font-medium underline">22 and 25 seater bus price guide</Link>. To see what a bus costs for a full day at 100, 150 or 250 km, read <Link to="/blog/$slug" params={{ slug: "bus-on-rent-in-bangalore-per-day-rate" }} className="font-medium underline">bus on rent in Bangalore per day</Link>.</p>
         </div>
+      </Section>
+
+      <Section title="Which bus for how many people">
+        <TableBox>
+          <table className="w-full min-w-[420px] text-left text-sm">
+            <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
+              <tr><th className="px-4 py-3">Group size</th><th className="px-4 py-3">Suggested vehicle</th></tr>
+            </thead>
+            <tbody>
+              {[
+                ["8 to 12 people", "Tempo Traveller or Force Urbania"],
+                ["13 to 22 people", "22 seater bus"],
+                ["18 to 25 people", "25 seater bus"],
+                ["26 to 33 people", "33 seater bus"],
+                ["34 to 40 people", "40 seater bus"],
+                ["41 to 45 people", "45 seater bus"],
+                ["46 to 50 people", "50 seater bus"],
+              ].map(([g, b]) => (
+                <tr key={g} className="border-t border-border/60"><td className="px-4 py-3 font-medium">{g}</td><td className="px-4 py-3">{b}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </TableBox>
+        <p className="mt-3 text-sm text-muted-foreground max-w-3xl">Leave a few seats free for bags. For a group of more than 50, we can arrange two vehicles from the same booking.</p>
+      </Section>
+
+      <Section title="One bus or several cars?">
+        <div className="space-y-3 text-sm leading-relaxed text-muted-foreground max-w-3xl">
+          <p>A group of 20 would need three or four cars, each with its own driver, bata and parking. One bus keeps everyone together, gives one pickup time and one point of contact, and is usually cheaper per person once the group is larger than about 14.</p>
+          <p>Cars still make sense for small groups, or when people leave from different places and cannot meet at one pickup point. Tell us your plan and we suggest the simpler option.</p>
+        </div>
+      </Section>
+
+      <Section title="What to share to get a quote">
+        <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed max-w-3xl">
+          <li>Date and the number of days you need the bus.</li>
+          <li>Pickup point and, for several pickups, each location and time.</li>
+          <li>Destination and any stops on the way.</li>
+          <li>Number of passengers and rough luggage.</li>
+          <li>AC or non-AC, and whether you need a one-way drop or a return.</li>
+        </ul>
+        <p className="mt-3 text-sm text-muted-foreground max-w-3xl">With these details we confirm the vehicle, fare and availability. Tolls, parking and state entry fees are charged on actuals.</p>
       </Section>
 
       <Section title="How to book a bus">
