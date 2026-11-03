@@ -639,6 +639,32 @@ export const posts: Post[] = [
       a: "Three days is comfortable: one for the drive in, one full day at the monuments and one for the drive back. A two-day trip leaves very little time at the sights.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-wayanad-taxi-fare",
+    routeSlug: "bangalore-to-wayanad-cab",
+    title: "Bangalore to Wayanad Taxi Fare: Price, Distance and 3-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Wayanad costs for a round trip, how long the drive takes, the Bandipur night-traffic rule, a 3-day plan, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Wayanad is a green hill district with waterfalls, caves and wildlife, and a popular long weekend trip from Bangalore. It is about 280 km, roughly 6 to 6.5 hours each way, via Mysore, Gundlupet and Bandipur. Most groups plan three days so they can see the main sights without rushing. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the same vehicle and driver stay for the whole visit, since Wayanad sights are spread out and local transport is limited. If you only need a drop in Wayanad, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break for breakfast near Mysore, and cross the Bandipur forest stretch in daylight. Check in and rest.",
+      "Day 2: Edakkal Caves and Banasura Sagar Dam, or Soochipara Falls and Chembra Peak, depending on the weather.",
+      "Day 3: a local viewpoint or spice plantation visit, then the return drive after lunch.",
+    ],
+    tips: [
+      "Plan to cross the Bandipur forest stretch in daylight, since night traffic there is restricted. Confirm the current rules before you travel because they can change.",
+      "Tell us your resort or homestay so the driver can plan the last stretch, which can be narrow.",
+      "Check the weather in the monsoon months, because heavy rain can affect some hill roads.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Can we drive through Bandipur at night on the way to Wayanad?",
+      a: "Night traffic on the Bandipur forest road is restricted, so we plan the trip to cross it in daylight. Confirm the current rules before travel, because they can change.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
