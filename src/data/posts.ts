@@ -665,6 +665,32 @@ export const posts: Post[] = [
       a: "Night traffic on the Bandipur forest road is restricted, so we plan the trip to cross it in daylight. Confirm the current rules before travel, because they can change.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-hogenakkal-taxi-fare",
+    routeSlug: "bangalore-to-hogenakkal-cab",
+    title: "Bangalore to Hogenakkal Taxi Fare: Price, Distance and One-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Hogenakkal costs for a one-day round trip, how long the drive takes, how to plan the coracle ride and lunch, and which vehicle suits your group, with sample fares.",
+    days: 1,
+    readMins: 4,
+    lead: "Hogenakkal Falls on the Kaveri is a popular one-day trip from Bangalore, known for coracle rides and cascading water. It is about 130 km, roughly 3 to 3.5 hours each way, so a one-day return of about 260 km is comfortable with an early start. This guide explains the fare, the day plan and how to choose a vehicle.",
+    oneWay: "Most visitors book a one-day round trip so the vehicle waits while they visit the falls and brings them back. If you plan to continue to another place after Hogenakkal, or only need a drop, we can quote a one-way instead. Tell us your plan and we quote both.",
+    plan: [
+      "Morning: leave Bangalore by 6 AM, with a breakfast break near Krishnagiri. The route runs through Hosur, so an early start avoids the heaviest traffic.",
+      "Late morning: view the falls and take a coracle ride, if the river flow allows it.",
+      "Lunch: local fish fry is popular near the river. Afternoon: start the return drive and reach Bangalore by evening.",
+    ],
+    tips: [
+      "Check the water-flow status before you leave. Coracle rides stop when the river is in heavy flow.",
+      "Start early to avoid crowds at the coracle point and the Hosur traffic.",
+      "Carry a change of clothes and keep valuables safe near the water.",
+      "The route crosses into Tamil Nadu, so tolls and any interstate charges are extra on actuals.",
+    ],
+    extraFaq: {
+      q: "Can we do Hogenakkal in one day from Bangalore?",
+      a: "Yes. With an early start it works as a one-day return trip of about 260 km. If you want a slower trip or want to add another stop, a two-day plan is easier.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
