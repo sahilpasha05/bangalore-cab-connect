@@ -691,6 +691,32 @@ export const posts: Post[] = [
       a: "Yes. With an early start it works as a one-day return trip of about 260 km. If you want a slower trip or want to add another stop, a two-day plan is easier.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-mangalore-taxi-fare",
+    routeSlug: "bangalore-to-mangalore-cab",
+    title: "Bangalore to Mangalore Taxi Fare: Price, Distance and 3-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Mangalore costs for a round trip, how long the drive takes, how to plan a 3-day coastal trip, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Mangalore is the gateway to the Karnataka coast, with beaches, temples and seafood, and a popular long weekend trip from Bangalore. It is about 350 km, so plan on a full day of driving each way rather than a quick run. Most groups book three days: drive down on the first day, spend the second on the coast and drive back on the third. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the same driver stays for the visit and brings them back. If you are flying out of Mangalore or continuing by train, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break for breakfast and lunch on the way, and reach Mangalore by evening. Check in and rest.",
+      "Day 2: spend the day on the coast. Many visitors combine local beaches with temples and a seafood lunch, and some add a day trip to nearby spots.",
+      "Day 3: a relaxed morning, then start the return drive after breakfast so you are not driving late into the night.",
+    ],
+    tips: [
+      "Plan for a long drive each way and leave early, especially on weekends.",
+      "Part of the route runs through ghat sections, so allow extra time and avoid driving them late at night in heavy rain.",
+      "Book the cab for the full trip so the same driver covers local travel on the coast too. Share your hotel location and we plan the days.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Is Mangalore a good one-day trip from Bangalore?",
+      a: "Not really. The drive is long each way, so a same-day return leaves almost no time there. Two nights and three days is a more comfortable plan.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
