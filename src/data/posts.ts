@@ -717,6 +717,32 @@ export const posts: Post[] = [
       a: "Not really. The drive is long each way, so a same-day return leaves almost no time there. Two nights and three days is a more comfortable plan.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-kabini-taxi-fare",
+    routeSlug: "bangalore-to-kabini-cab",
+    title: "Bangalore to Kabini Taxi Fare: Price, Distance and Weekend Trip Plan",
+    description:
+      "What a taxi from Bangalore to Kabini costs for a weekend round trip, how long the drive takes, how to plan safari and boating days, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Kabini is known for its backwaters and the Nagarhole forest on the other side of the river, and it is a popular weekend break for nature and wildlife lovers. It is about 220 km, roughly 5 to 5.5 hours each way, via Mysore, Hunsur and HD Kote. Most groups plan two nights and three days. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Most travellers book a round trip so the same driver stays for the weekend and brings them back. If you only need a drop at your resort, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore on Friday evening or early Saturday, break near Mysore and reach your resort by afternoon. Relax by the backwaters.",
+      "Day 2: an early morning safari, then a boat ride in the afternoon if your resort offers one.",
+      "Day 3: a slow breakfast and the return drive, reaching Bangalore by evening.",
+    ],
+    tips: [
+      "Book your resort and safari slots in advance, especially on weekends and long weekends. Safari and boating slots are booked through the resort.",
+      "Share your resort name. The last stretch uses village roads, and the driver can plan the final leg.",
+      "Keep your arrival time flexible, since forest roads can have wildlife on the road.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Is Kabini better as a weekend trip or a longer stay?",
+      a: "Two nights works well for a weekend. A third night gives more time for safaris and the backwaters.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
