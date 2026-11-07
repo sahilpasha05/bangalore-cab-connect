@@ -1,5 +1,6 @@
 import { defineHandler } from "nitro/h3";
 import { addBooking, json } from "../../../utils/store";
+import { notifyBooking } from "../../../utils/notify";
 
 const clip = (v: unknown, n = 500) => String(v ?? "").trim().slice(0, n);
 
@@ -26,5 +27,6 @@ export default defineHandler(async (event) => {
     passengers: clip(body.passengers, 10),
     notes: clip(body.notes, 1000),
   });
+  await notifyBooking(booking);
   return json({ ok: true, id: booking.id }, { status: 201 });
 });
