@@ -743,6 +743,33 @@ export const posts: Post[] = [
       a: "Two nights works well for a weekend. A third night gives more time for safaris and the backwaters.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-goa-taxi-fare",
+    routeSlug: "bangalore-to-goa-cab",
+    title: "Bangalore to Goa Taxi Fare: Price, Distance and 4-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Goa costs for a round trip, how long the drive takes, where to break the journey, and which vehicle suits your group, with sample fares for a 4-day trip.",
+    days: 4,
+    readMins: 6,
+    lead: "Goa is a long drive from Bangalore, about 560 km and roughly 10 to 11 hours each way, so it works best as a relaxed multi-day trip rather than a rushed weekend. Most groups book four days: drive down on the first day, spend two days in Goa and drive back on the fourth. This guide explains the fare, the drive, where to break the journey and how to choose a vehicle.",
+    oneWay: "Many travellers book a round trip so the same driver stays for the whole holiday and brings them back. If you plan to fly or take a train back, we can quote a one-way drop to Goa instead. Tell us your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early and drive towards Goa, with a break at Hubballi or Dharwad if you prefer to split the journey. Reach Goa by evening or the next morning.",
+      "Day 2: North Goa beaches and Panjim. Keep the cab with you for local travel between beaches.",
+      "Day 3: Old Goa churches, or Dudhsagar Falls if the season and road conditions allow.",
+      "Day 4: start the return drive after breakfast, with a halt on the way if needed.",
+    ],
+    tips: [
+      "Do not plan a same-day return. The drive is too long each way to do in a day.",
+      "Break the journey at Hubballi or Dharwad if you do not want one long day of driving.",
+      "November to February is the best season. Monsoon months are quiet and many beach shacks close.",
+      "Tolls, parking and Goa entry or permit charges are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "How many days should we book for a Bangalore to Goa taxi?",
+      a: "Four days is a comfortable minimum: one day each for the drive in and out, and two days in Goa. A shorter trip leaves most of the time on the road.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
