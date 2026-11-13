@@ -770,6 +770,32 @@ export const posts: Post[] = [
       a: "Four days is a comfortable minimum: one day each for the drive in and out, and two days in Goa. A shorter trip leaves most of the time on the road.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-shivanasamudra-taxi-fare",
+    routeSlug: "bangalore-to-shivanasamudra-cab",
+    title: "Bangalore to Shivanasamudra Taxi Fare: Price, Distance and One-Day Trip Plan",
+    description:
+      "What a taxi from Bangalore to Shivanasamudra Falls costs for a one-day round trip, how long the drive takes, which nearby stops to add, and which vehicle suits your group, with sample fares.",
+    days: 1,
+    readMins: 4,
+    lead: "Shivanasamudra has two waterfalls on the Kaveri, Gaganachukki and Barachukki, and it is an easy one-day trip from Bangalore. It is about 130 km, roughly 3 hours each way, so a one-day return of about 260 km works with an early start. Many people add Talakadu or Somanathapura to the same day. This guide explains the fare, the day plan and how to choose a vehicle.",
+    oneWay: "Most visitors book a one-day round trip so the vehicle waits while they see the falls and brings them back. If you plan to continue to Mysore or another stop afterwards, we can quote a one-way drop instead. Tell us your plan and we quote both.",
+    plan: [
+      "Morning: leave Bangalore by 6 AM and take a breakfast break on the way.",
+      "Late morning: visit the Gaganachukki and Barachukki viewpoints.",
+      "Afternoon: add Talakadu or the Somanathapura temple, have lunch, and start the return drive so you reach Bangalore by evening.",
+    ],
+    tips: [
+      "The falls are fullest in the rainy and post-monsoon months, July to November, so check conditions before you travel.",
+      "Viewpoint paths can be slippery, so wear shoes with grip.",
+      "Keep your return time realistic. The drive back is the longest part of the day, and adding both Talakadu and Somanathapura makes it a long day.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Can Shivanasamudra and Somanathapura be done in one day?",
+      a: "Yes, if you start early, but together with Talakadu they add a good amount of driving. Tell us your plan and we suggest the stops.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
