@@ -796,6 +796,32 @@ export const posts: Post[] = [
       a: "Yes, if you start early, but together with Talakadu they add a good amount of driving. Tell us your plan and we suggest the stops.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-shivamogga-taxi-fare",
+    routeSlug: "bangalore-to-shivamogga-cab",
+    title: "Bangalore to Shivamogga (Shimoga) Taxi Fare: Price, Distance and Trip Plan",
+    description:
+      "What a taxi from Bangalore to Shivamogga (Shimoga) costs for a round trip, how long the drive takes, one-way drop versus round trip, and which vehicle suits your group, with sample fares.",
+    days: 2,
+    readMins: 5,
+    lead: "Shivamogga, also spelt Shimoga, is the gateway to the Malnad region and to Jog Falls and the Western Ghats. It is about 305 km from Bangalore and takes roughly 5.5 to 6 hours each way, so most trips are either a one-way drop or a two-day round trip. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Many travellers book a one-way drop, for example for a family visit, a function or work in Shivamogga. Others book a round trip so the same driver stays for local travel and the return. Share your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore in the morning, break near Tumakuru or Arsikere and reach Shivamogga by afternoon. The route passes Tarikere and Bhadravathi, so drops at those towns are easy to combine.",
+      "Day 2: local sightseeing such as Sakrebailu Elephant Camp, Tyavarekoppa Lion and Tiger Safari, or the Gajanur and Tunga dams, then the return drive.",
+      "For Jog Falls or Agumbe, plan an extra day, since they are further into the Western Ghats.",
+    ],
+    tips: [
+      "Do not plan a same-day return. The drive is long each way.",
+      "Check weather in the monsoon months, because hill and ghat roads can be wet.",
+      "Tell us your pickup and drop points, and any stops, so the driver can plan the day.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Is it Shivamogga or Shimoga?",
+      a: "Both names refer to the same city. Shivamogga is the official spelling and Shimoga is the older one still in common use. You can book under either name.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
