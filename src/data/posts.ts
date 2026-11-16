@@ -822,6 +822,32 @@ export const posts: Post[] = [
       a: "Both names refer to the same city. Shivamogga is the official spelling and Shimoga is the older one still in common use. You can book under either name.",
     },
   }),
+  highwayPost({
+    slug: "bangalore-to-sagara-taxi-fare",
+    routeSlug: "bangalore-to-sagara-cab",
+    title: "Bangalore to Sagara (Sagar) and Jog Falls Taxi Fare: Price, Distance and Trip Plan",
+    description:
+      "What a taxi from Bangalore to Sagara (Sagar) and Jog Falls costs for a round trip, how long the drive takes, a 3-day plan, and which vehicle suits your group, with sample fares.",
+    days: 3,
+    readMins: 5,
+    lead: "Sagara, also spelt Sagar, is a town in Shivamogga district and the nearest base for Jog Falls. It is about 395 km from Bangalore and takes roughly 7.5 to 8 hours each way, so a same-day return is not realistic. Most groups book three days: drive down on the first day, see Jog Falls and the nearby temples on the second, and return on the third. This guide explains the fare, the drive and how to choose a vehicle.",
+    oneWay: "Some travellers book a one-way drop to Sagara, for example when they are continuing to the coast or returning another way. Most book a round trip so the same driver stays for the sightseeing. Share your plan and we quote both.",
+    plan: [
+      "Day 1: leave Bangalore early, break for lunch near Shivamogga and reach Sagara by evening. Check in and rest.",
+      "Day 2: Jog Falls in the morning, then Ikkeri and Keladi temples in the afternoon. Keeping the same vehicle makes the local sightseeing easy.",
+      "Day 3: a relaxed morning, then the drive back to Bangalore.",
+    ],
+    tips: [
+      "Jog Falls looks best from July to November, when the water flow is high. Check the season before you go.",
+      "Plan an early start or an overnight halt on the way, since the drive is long.",
+      "Share your hotel or homestay name so the driver can plan the final stretch.",
+      "Tolls and parking are charged on actuals.",
+    ],
+    extraFaq: {
+      q: "Is it Sagara or Sagar?",
+      a: "Both names refer to the same town in Shivamogga district. Sagara is the official spelling and Sagar is the common name. You can book under either name.",
+    },
+  }),
   {
     slug: "bus-on-rent-in-bangalore-per-day-rate",
     title: "Bus on Rent in Bangalore per Day: Rates, Sample Costs and Cost per Person",
